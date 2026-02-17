@@ -30,7 +30,7 @@ const About = () => {
                             </span>
                         </h2>
 
-                        <div className="space-y-6 text-base font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
+                        <div className="space-y-8 text-lg md:text-xl font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
                             <p className="text-balance">
                                 Currently pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
                                 I specialize in turning research-grade models into production systems — from

@@ -91,12 +91,12 @@ function App() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8 }}
               onClick={() => setIsTechSpecsOpen(prev => !prev)}
-              className={`fixed top-6 right-6 z-50 p-3 rounded-full backdrop-blur-xl border transition-all duration-300 group ${isTechSpecsOpen
+              className={`fixed top-6 right-6 z-50 p-4 rounded-full backdrop-blur-xl border transition-all duration-300 group ${isTechSpecsOpen
                 ? 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.3)]'
                 : 'bg-white/5 border-white/10 text-white/50 hover:text-indigo-400 hover:border-indigo-500/50 hover:bg-indigo-500/10'
                 }`}
             >
-              <Activity size={20} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
+              <Activity size={24} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
               <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 text-xs rounded-lg text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                 {isTechSpecsOpen ? 'Hide System Stats' : 'View Developer HUD'}
               </span>
