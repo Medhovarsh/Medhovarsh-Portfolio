@@ -1,0 +1,120 @@
+﻿
+> medhovarsh-portfolio@0.0.0 lint
+> eslint .
+
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CommandPalette.tsx
+   3:76  error    'Command' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  20:86  error    Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CommandPalette.tsx:20:86
+  18 |             section: 'Navigation',
+  19 |             items: [
+> 20 |                 { icon: <Code size={18} />, label: 'Go to Projects', action: () => { window.location.href = '#projects'; } },
+     |                                                                                      ^^^^^^^^^^^^^^^ value cannot be modified
+  21 |                 { icon: <MapPin size={18} />, label: 'Experience', action: () => { window.location.href = '#experience'; } },
+  22 |                 { icon: <Mail size={18} />, label: 'Contact', action: () => { window.location.href = '#contact'; } },
+  23 |             ],                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/immutability
+  21:84  error    Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CommandPalette.tsx:21:84
+  19 |             items: [
+  20 |                 { icon: <Code size={18} />, label: 'Go to Projects', action: () => { window.location.href = '#projects'; } },
+> 21 |                 { icon: <MapPin size={18} />, label: 'Experience', action: () => { window.location.href = '#experience'; } },
+     |                                                                                    ^^^^^^^^^^^^^^^ value cannot be modified
+  22 |                 { icon: <Mail size={18} />, label: 'Contact', action: () => { window.location.href = '#contact'; } },
+  23 |             ],
+  24 |         },                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/immutability
+  22:79  error    Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CommandPalette.tsx:22:79
+  20 |                 { icon: <Code size={18} />, label: 'Go to Projects', action: () => { window.location.href = '#projects'; } },
+  21 |                 { icon: <MapPin size={18} />, label: 'Experience', action: () => { window.location.href = '#experience'; } },
+> 22 |                 { icon: <Mail size={18} />, label: 'Contact', action: () => { window.location.href = '#contact'; } },
+     |                                                                               ^^^^^^^^^^^^^^^ value cannot be modified
+  23 |             ],
+  24 |         },
+  25 |         {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/immutability
+  74:21  error    Error: Cannot access variable before it is declared
+
+`handleSelect` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CommandPalette.tsx:74:21
+  72 |                 e.preventDefault();
+  73 |                 if (flattenedItems[selectedIndex]) {
+> 74 |                     handleSelect(flattenedItems[selectedIndex].action);
+     |                     ^^^^^^^^^^^^ `handleSelect` accessed before it is declared
+  75 |                 }
+  76 |             }
+  77 |         };
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CommandPalette.tsx:82:5
+  80 |     }, [isOpen, setIsOpen, flattenedItems, selectedIndex]);
+  81 |
+> 82 |     const handleSelect = (action: () => void) => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 83 |         action();
+     | ^^^^^^^^^^^^^^^^^
+> 84 |         setIsOpen(false);
+     | ^^^^^^^^^^^^^^^^^
+> 85 |         setQuery('');
+     | ^^^^^^^^^^^^^^^^^
+> 86 |     };
+     | ^^^^^^^ `handleSelect` is declared here
+  87 |
+  88 |     // Helper to check if item is selected based on flattened index
+  89 |     const isSelected = (sectionIndex: number, itemIndex: number) => {  react-hooks/immutability
+  80:8   warning  React Hook useEffect has a missing dependency: 'handleSelect'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/exhaustive-deps
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\Contact.tsx
+  1:10  error  'useRef' is defined but never used        @typescript-eslint/no-unused-vars
+  2:18  error  'useScroll' is defined but never used     @typescript-eslint/no-unused-vars
+  2:29  error  'useTransform' is defined but never used  @typescript-eslint/no-unused-vars
+  3:47  error  'ArrowRight' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CustomCursor.tsx
+  26:49  error  Error: Cannot access variable before it is declared
+
+`tick` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CustomCursor.tsx:26:49
+  24 |         const el = cursorRef.current;
+  25 |         if (!el) {
+> 26 |             raf.current = requestAnimationFrame(tick);
+     |                                                 ^^^^ `tick` accessed before it is declared
+  27 |             return;
+  28 |         }
+  29 |
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\CustomCursor.tsx:23:5
+  21 |     const stateRef = useRef('default');
+  22 |
+> 23 |     const tick = useCallback(() => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |         const el = cursorRef.current;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |         if (!el) {
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |         raf.current = requestAnimationFrame(tick);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |     }, []);
+     | ^^^^^^^^^^^^ `tick` is declared here
+  39 |
+  40 |     useEffect(() => {
+  41 |         if (window.matchMedia('(pointer: coarse)').matches) return;  react-hooks/immutability
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\Dock.tsx
+  85:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\mbayy\Downloads\portfolio\medhovarsh-portfolio\src\components\Hero.tsx
+  134:8  warning  React Hook useEffect has missing dependencies: 'mouseX', 'mouseY', 'radius', 'smoothX', and 'smoothY'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Γ£û 13 problems (11 errors, 2 warnings)
+

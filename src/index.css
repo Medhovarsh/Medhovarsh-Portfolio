@@ -1,0 +1,429 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme Variables ── */
+:root {
+  /* Dark mode (default) */
+  --theme-bg: #030014;
+  --theme-bg-secondary: #0a0a1a;
+  --theme-surface: rgba(255, 255, 255, 0.01);
+  --theme-surface-hover: rgba(255, 255, 255, 0.06);
+  --theme-border: rgba(255, 255, 255, 0.05);
+  --theme-border-hover: rgba(255, 255, 255, 0.15);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #cbd5e1;
+  /* slate-300 */
+  --theme-text-tertiary: #94a3b8;
+  /* slate-400 */
+  --theme-text-muted: #64748b;
+  /* slate-500 */
+  --theme-accent: #6366f1;
+  /* indigo-500 */
+  --theme-accent-light: #818cf8;
+  /* indigo-400 */
+  --theme-accent-surface: rgba(99, 102, 241, 0.1);
+  --theme-accent-border: rgba(99, 102, 241, 0.2);
+  --theme-glass-bg: rgba(255, 255, 255, 0.03);
+  --theme-glass-border: rgba(255, 255, 255, 0.08);
+  --theme-card-bg: rgba(255, 255, 255, 0.01);
+  --theme-card-hover-bg: rgba(255, 255, 255, 0.03);
+  --theme-tag-bg: rgba(255, 255, 255, 0.03);
+  --theme-tag-border: rgba(255, 255, 255, 0.06);
+  --theme-tag-text: #cbd5e1;
+  --theme-scrollbar-track: #030014;
+  --theme-scrollbar-thumb: #1f1f2e;
+  --theme-scrollbar-thumb-hover: #3a3a55;
+  --theme-shadow: rgba(0, 0, 0, 0.3);
+  --theme-dock-bg: rgba(0, 0, 0, 0.2);
+  --theme-heading-shadow: 0 0 80px rgba(255, 255, 255, 0.08), 0 0 32px rgba(255, 255, 255, 0.04);
+  --theme-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --theme-glow: 0 0 60px rgba(99, 102, 241, 0.3), 0 0 120px rgba(99, 102, 241, 0.1);
+  --theme-glow-white: 0 0 40px rgba(255, 255, 255, 0.15), 0 0 80px rgba(255, 255, 255, 0.05);
+  --theme-aurora-1: rgba(79, 70, 229, 0.06);
+  --theme-aurora-2: rgba(59, 130, 246, 0.05);
+  --theme-grain-opacity: 0.02;
+  --theme-logo-stroke: white;
+  --theme-logo-glow: rgba(255, 255, 255, 0.5);
+
+  /* Reveal layer */
+  --theme-reveal-bg: #E11D48;
+  --theme-timeline-dot-bg: #030014;
+}
+
+/* ── Light Mode ── */
+.light {
+  --theme-bg: #ffffff;
+  --theme-bg-secondary: #f8fafc;
+  --theme-surface: #f1f5f9;
+  --theme-surface-hover: #e2e8f0;
+  --theme-border: #e2e8f0;
+  --theme-border-hover: #cbd5e1;
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #334155;
+  --theme-text-tertiary: #64748b;
+  --theme-text-muted: #94a3b8;
+  --theme-accent: #4f46e5;
+  --theme-accent-light: #6366f1;
+  --theme-accent-surface: rgba(79, 70, 229, 0.05);
+  --theme-accent-border: rgba(79, 70, 229, 0.15);
+  --theme-glass-bg: rgba(255, 255, 255, 0.75);
+  --theme-glass-border: rgba(255, 255, 255, 0.5);
+  --theme-card-bg: #ffffff;
+  --theme-card-hover-bg: #f8fafc;
+  --theme-tag-bg: #f1f5f9;
+  --theme-tag-border: #e2e8f0;
+  --theme-tag-text: #475569;
+  --theme-scrollbar-track: #f1f5f9;
+  --theme-scrollbar-thumb: #cbd5e1;
+  --theme-scrollbar-thumb-hover: #94a3b8;
+  --theme-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --theme-dock-bg: rgba(255, 255, 255, 0.8);
+  --theme-heading-shadow: none;
+  --theme-text-shadow: none;
+  --theme-glow: 0 0 20px rgba(79, 70, 229, 0.15);
+  --theme-glow-white: none;
+  --theme-aurora-1: rgba(79, 70, 229, 0.08);
+  --theme-aurora-2: rgba(59, 130, 246, 0.08);
+  --theme-grain-opacity: 0.03;
+  --theme-logo-stroke: #0f172a;
+  --theme-logo-glow: rgba(0, 0, 0, 0.05);
+
+  --theme-reveal-bg: #4f46e5;
+  --theme-timeline-dot-bg: #ffffff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+    background-color: var(--theme-bg);
+    color: var(--theme-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  body {
+    @apply antialiased overflow-x-hidden font-sans;
+    letter-spacing: -0.01em;
+    line-height: 1.7;
+    background-color: var(--theme-bg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-ultra-tight text-balance;
+    text-shadow: var(--theme-heading-shadow);
+    color: var(--theme-text-primary);
+  }
+
+  p {
+    text-shadow: var(--theme-text-shadow);
+  }
+
+  ::selection {
+    background-color: var(--theme-accent);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .tracking-ultra-tight {
+    letter-spacing: -0.05em;
+  }
+
+  .text-glow {
+    text-shadow: var(--theme-glow);
+  }
+
+  .text-glow-white {
+    text-shadow: var(--theme-glow-white);
+  }
+
+  /* Theme-aware utility classes */
+  .theme-bg {
+    background-color: var(--theme-bg);
+  }
+
+  .theme-bg-secondary {
+    background-color: var(--theme-bg-secondary);
+  }
+
+  .theme-text {
+    color: var(--theme-text-primary);
+  }
+
+  .theme-text-secondary {
+    color: var(--theme-text-secondary);
+  }
+
+  .theme-text-tertiary {
+    color: var(--theme-text-tertiary);
+  }
+
+  .theme-text-muted {
+    color: var(--theme-text-muted);
+  }
+
+  .theme-border {
+    border-color: var(--theme-border);
+  }
+
+  .theme-surface {
+    background-color: var(--theme-surface);
+  }
+}
+
+/* ── Section Settings ── */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+#home {
+  z-index: 10;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-scrollbar-thumb);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-scrollbar-thumb-hover);
+}
+
+::selection {
+  background-color: var(--theme-accent);
+  color: #fff;
+}
+
+/* ── Minimalist Cursor ── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--theme-text-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--theme-border-hover);
+  background-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+  will-change: width, height, transform, background-color, border-color;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover State - Solid Ring (High Visibility) */
+.cursor-ring[data-state="hover"] {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(99, 102, 241, 0.1);
+  border-color: var(--theme-accent);
+  border-width: 2px;
+  mix-blend-mode: normal;
+  z-index: 10002;
+}
+
+/* Text State - Bar */
+.cursor-ring[data-state="text"] {
+  width: 4px;
+  height: 24px;
+  border-radius: 2px;
+  background-color: var(--theme-text-primary);
+  border: none;
+}
+
+/* Logo State - Keep Inversion for "Smart" feel but larger */
+.cursor-ring[data-state="logo"] {
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  border: none;
+  mix-blend-mode: difference;
+  z-index: 10002;
+}
+
+/* Show dot in hover state, hide only for log/text */
+body:has(.cursor-ring[data-state="logo"]) .cursor-dot {
+  opacity: 0;
+}
+
+
+
+/* Base layer text */
+.hero-base-layer {
+  position: relative;
+  z-index: 10;
+  color: var(--theme-text-secondary);
+}
+
+.section-divider {
+  @apply w-full h-px bg-gradient-to-r from-transparent via-current opacity-10 to-transparent my-10;
+}
+
+/* ── Aurora Background ── */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 30%, var(--theme-aurora-1), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 70%, var(--theme-aurora-2), transparent);
+  transition: background 0.6s ease;
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: var(--theme-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--theme-glass-border);
+  border-radius: 1rem;
+  transition: all 0.5s ease;
+  box-shadow: var(--theme-shadow);
+}
+
+.glass-card:hover {
+  border-color: var(--theme-border-hover);
+  background: var(--theme-surface-hover);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+.glass-panel {
+  background: var(--theme-surface);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--theme-border);
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--theme-grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+
+
+/* ── Clutter Free Spacing ── */
+section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Hide custom cursor on touch devices */
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  html {
+    cursor: auto;
+  }
+
+  /* Disable grain on mobile for performance */
+  .grain-overlay {
+    display: none;
+  }
+
+  /* Reduce aurora intensity for performance */
+  .aurora-bg {
+    opacity: 0.5;
+  }
+}
+
+/* ── Theme Toggle Button ── */
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--theme-accent-surface);
+  border: 1px solid var(--theme-accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--theme-accent-light);
+}
+
+.theme-toggle:hover {
+  background: var(--theme-accent);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* ── Smooth theme transitions ── */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0s;
+}
+
+html.transitioning *,
+html.transitioning *::before,
+html.transitioning *::after {
+  transition-duration: 0.4s !important;
+  transition-timing-function: ease !important;
+}
