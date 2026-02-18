@@ -39,6 +39,17 @@ export const portfolioData = {
                 text: "View Springer Publication",
                 url: "https://link.springer.com/chapter/10.1007/978-981-97-6995-7_31"
             }
+        },
+        {
+            company: "EnLightenTech",
+            role: "Team Leader",
+            duration: "Aug 2023 - Sep 2023",
+            location: "Ongole, India",
+            achievements: [
+                "Led a rural development initiative focused on sustainable energy, simplifying Solar Energy technical concepts for local communities to drive adoption.",
+                "Directed an 'Ethical AI' educational program for 200+ 10th-grade students, designing a curriculum that bridges the gap between complex algorithms and foundational understanding.",
+                "Achieved a 90% workshop satisfaction rate by translating high-level engineering paradigms into accessible narratives, demonstrating the ability to communicate with non-technical stakeholders."
+            ]
         }
     ],
     projects: [
