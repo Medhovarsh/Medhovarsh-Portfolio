@@ -156,7 +156,7 @@ const Hero = () => {
                                     }}
                                 >
                                     <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                                    Solution Architect & AI Engineer
+                                    {portfolioData.personalInfo.title}
                                 </div>
                                 <h1 className="text-[clamp(3rem,6vw,5.5rem)] font-black tracking-ultra-tight leading-[0.85] text-glow-white">
                                     Medhovarsh <br />
@@ -166,7 +166,7 @@ const Hero = () => {
                                 </h1>
                             </div>
                             <p className="max-w-md text-xl font-medium leading-relaxed text-balance" style={{ color: 'var(--theme-text-secondary)' }}>
-                                Scaling neural architectures and building high-performance systems from the ground up.
+                                Building scalable software applications and integrating machine learning models into production.
                             </p>
                             <div className="flex gap-4 mt-4">
                                 <a
@@ -201,7 +201,7 @@ const Hero = () => {
                             }}
                         >
                             <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                            Solution Architect & AI Engineer
+                            {portfolioData.personalInfo.title}
                         </div>
                         <h1 className="text-4xl font-black leading-[0.9] tracking-ultra-tight text-balance text-glow-white">
                             {name.split(' ')[0]} <br />
@@ -210,7 +210,7 @@ const Hero = () => {
                             </span>
                         </h1>
                         <p className="text-base font-medium max-w-xs leading-relaxed text-balance" style={{ color: 'var(--theme-text-secondary)' }}>
-                            Scaling neural architectures and building high-performance systems from the ground up.
+                            Building scalable software applications and integrating machine learning models into production.
                         </p>
                         <div className="my-8">
                             <BotScene />

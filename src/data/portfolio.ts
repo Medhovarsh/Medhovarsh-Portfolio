@@ -1,12 +1,12 @@
 export const portfolioData = {
     personalInfo: {
         name: "Medhovarsh Bayyapureddi",
-        title: "Solution Architect & AI Engineer",
+        title: "Software & Machine Learning Engineer",
         email: "medhovarshb@gmail.com",
         phone: "+1 (786)-483-0198",
         linkedin: "https://www.linkedin.com/in/medhovarsh-bayyapureddi/",
         github: "https://github.com/Medhovarsh",
-        bio: "Bridging ML research and production — from medical imaging pipelines to real-time computer vision. MS in Technology Management from UIUC, with published work at Springer and IEEE."
+        bio: "Software Engineer specializing in machine learning and full-stack development. Experienced in building robust medical imaging pipelines and real-time computer vision applications. MS in Technology Management at UIUC."
     },
     education: [
         {
