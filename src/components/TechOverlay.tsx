@@ -67,27 +67,59 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
             memRef.current.textContent = `${used}MB`;
         }
 
-        // 3. Scroll Progress
-        if (scrollRef.current) {
-            const total = document.documentElement.scrollHeight - window.innerHeight;
-            const current = window.scrollY;
-            const progress = total > 0 ? Math.round((current / total) * 100) : 0;
-            scrollRef.current.textContent = `${progress}%`;
-        }
+        // 3. Scroll Progress (Removed from frame loop to prevent layout thrashing)
     });
 
-    // Mouse is best handled via native event listener to capture it even if frame drops
+    // High Performance Mouse Event - Throttled mapping
     useEffect(() => {
         if (!isVisible) return;
 
+        let ticking = false;
+
         const handleMouseMove = (e: MouseEvent) => {
-            if (mouseRef.current) {
-                mouseRef.current.textContent = `X:${e.clientX.toString().padStart(4, '0')} Y:${e.clientY.toString().padStart(4, '0')}`;
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    if (mouseRef.current) {
+                        mouseRef.current.textContent = `X:${e.clientX.toString().padStart(4, '0')} Y:${e.clientY.toString().padStart(4, '0')}`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
         window.addEventListener('mousemove', handleMouseMove, { passive: true });
         return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [isVisible]);
+
+    // High Performance Scroll Event (Avoids calculating document height 60 times a second)
+    useEffect(() => {
+        if (!isVisible) return;
+
+        let ticking = false;
+
+        const updateScroll = () => {
+            if (scrollRef.current) {
+                const total = document.documentElement.scrollHeight - window.innerHeight;
+                const current = window.scrollY;
+                const progress = total > 0 ? Math.round((current / total) * 100) : 0;
+                scrollRef.current.textContent = `${progress}%`;
+            }
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        }
+
+        // Trigger once on mount
+        updateScroll();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [isVisible]);
 
     return (
