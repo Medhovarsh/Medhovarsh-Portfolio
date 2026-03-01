@@ -87,19 +87,21 @@ function App() {
 
             {/* Developer HUD Toggle */}
             <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              whileHover={{ scale: 1.08, rotate: 5 }}
+              whileTap={{ scale: 0.92, rotate: -5 }}
+              transition={{ delay: 0.8, type: 'spring', stiffness: 400, damping: 17 }}
               onClick={() => setIsTechSpecsOpen(prev => !prev)}
-              className="fixed top-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-all duration-300 group"
+              className="fixed top-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
               style={{
-                background: isTechSpecsOpen ? 'var(--theme-accent-surface)' : 'var(--theme-surface)',
-                borderColor: isTechSpecsOpen ? 'var(--theme-accent-border)' : 'var(--theme-border)',
-                color: isTechSpecsOpen ? 'var(--theme-accent)' : 'var(--theme-text-muted)',
+                background: isTechSpecsOpen ? 'var(--theme-accent-surface)' : 'var(--theme-glass-bg)',
+                borderColor: isTechSpecsOpen ? 'var(--theme-accent)' : 'var(--theme-glass-border)',
+                color: isTechSpecsOpen ? 'var(--theme-accent)' : 'var(--theme-text-primary)',
                 boxShadow: isTechSpecsOpen ? 'var(--theme-glow)' : 'var(--theme-shadow)'
               }}
             >
-              <Activity size={24} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
+              <Activity size={24} strokeWidth={isTechSpecsOpen ? 2.5 : 2} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
               <span
                 className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 backdrop-blur-md border text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
                 style={{
