@@ -1,86 +1,178 @@
 import { useRef, useEffect, memo, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { portfolioData } from '../data/portfolio';
-import { ArrowRight, ChevronDown, Laptop, Code2, Cpu, Globe } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 /* ── CONFIG ── */
 
-const BotScene = memo(() => {
+const ParticleSphere = memo(() => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let animationFrameId: number;
+
+        const particleCount = 250;
+        const sphereRadius = 140;
+        const particles: any[] = [];
+        const baseSize = 1.2;
+
+        const updateSize = () => {
+            const parent = canvas.parentElement;
+            if (parent) {
+                canvas.width = parent.clientWidth;
+                canvas.height = parent.clientHeight;
+            }
+        };
+        updateSize();
+        window.addEventListener('resize', updateSize);
+
+        // Fibonacci sphere
+        for (let i = 0; i < particleCount; i++) {
+            const phi = Math.acos(1 - 2 * (i + 0.5) / particleCount);
+            const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+
+            particles.push({
+                x: sphereRadius * Math.sin(phi) * Math.cos(theta),
+                y: sphereRadius * Math.sin(phi) * Math.sin(theta),
+                z: sphereRadius * Math.cos(phi),
+                baseX: sphereRadius * Math.sin(phi) * Math.cos(theta),
+                baseY: sphereRadius * Math.sin(phi) * Math.sin(theta),
+                baseZ: sphereRadius * Math.cos(phi),
+            });
+        }
+
+        let isDarkMode = document.documentElement.classList.contains('light') === false;
+        const observer = new MutationObserver(() => {
+            isDarkMode = document.documentElement.classList.contains('light') === false;
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+        let angleX = 0;
+        let angleY = 0;
+
+        let mouseX = -9999;
+        let mouseY = -9999;
+
+        const handleMouseMove = (e: MouseEvent) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        };
+        const handleMouseLeave = () => {
+            mouseX = -9999;
+            mouseY = -9999;
+        };
+
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseleave', handleMouseLeave);
+
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+
+            angleX += 0.0015;
+            angleY += 0.002;
+
+            const cosX = Math.cos(angleX);
+            const sinX = Math.sin(angleX);
+            const cosY = Math.cos(angleY);
+            const sinY = Math.sin(angleY);
+
+            const projected = particles.map(p => {
+                // Spring back to base position
+                p.x += (p.baseX - p.x) * 0.05;
+                p.y += (p.baseY - p.y) * 0.05;
+                p.z += (p.baseZ - p.z) * 0.05;
+
+                // Rotate Y
+                let tempX = p.x * cosY - p.z * sinY;
+                let tempZ = p.z * cosY + p.x * sinY;
+
+                // Rotate X
+                let tempY = p.y * cosX - tempZ * sinX;
+                let finalZ = tempZ * cosX + p.y * sinX;
+
+                // Hover Force Rejection
+                const screenX = centerX + tempX;
+                const screenY = centerY + tempY;
+
+                const dx = screenX - mouseX;
+                const dy = screenY - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = 100;
+
+                if (dist < maxDist) {
+                    const force = (maxDist - dist) / maxDist;
+                    p.x += (dx / dist) * force * 4;
+                    p.y += (dy / dist) * force * 4;
+                    p.z -= force * 4;
+                }
+
+                return {
+                    x: tempX,
+                    y: tempY,
+                    z: finalZ,
+                };
+            }).sort((a, b) => a.z - b.z);
+
+            const maxLineDist = 45;
+            ctx.lineWidth = 0.5;
+
+            const dotColor = isDarkMode ? '129, 140, 248' : '79, 70, 229'; // indigo-400 / indigo-600
+            const lineColor = isDarkMode ? '99, 102, 241' : '99, 102, 241'; // indigo-500
+
+            projected.forEach((p, i) => {
+                const scale = (sphereRadius + p.z) / (sphereRadius * 2);
+                const size = baseSize * (0.5 + scale);
+                const alpha = Math.max(0.1, scale);
+
+                ctx.beginPath();
+                ctx.arc(centerX + p.x, centerY + p.y, size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${dotColor}, ${alpha})`;
+                ctx.fill();
+
+                for (let j = i + 1; j < projected.length; j++) {
+                    const p2 = projected[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dz = p.z - p2.z;
+                    const distSq = dx * dx + dy * dy + dz * dz;
+
+                    if (distSq < maxLineDist * maxLineDist) {
+                        const distAlpha = (1 - Math.sqrt(distSq) / maxLineDist) * alpha;
+                        ctx.beginPath();
+                        ctx.moveTo(centerX + p.x, centerY + p.y);
+                        ctx.lineTo(centerX + p2.x, centerY + p2.y);
+                        ctx.strokeStyle = `rgba(${lineColor}, ${distAlpha * 0.4})`;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            animationFrameId = requestAnimationFrame(draw);
+        };
+
+        draw();
+
+        return () => {
+            window.removeEventListener('resize', updateSize);
+            canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mouseleave', handleMouseLeave);
+            cancelAnimationFrame(animationFrameId);
+            observer.disconnect();
+        };
+    }, []);
+
     return (
-        <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] preserve-3d">
-            {/* 1. Base Platform */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-xl transform rotate-x-[60deg] animate-pulse" />
-
-            {/* 2. Abstract Avatar (Bot) */}
-            <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-40 flex flex-col items-center justify-center z-20 preserve-3d will-change-transform"
-                style={{ transform: "translateZ(50px)" }}
-            >
-                {/* Head */}
-                <div className="w-20 h-20 rounded-2xl shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center justify-center relative overflow-hidden backdrop-blur-md border border-white/40 bg-gradient-to-tr from-white to-indigo-300">
-                    <div className="flex gap-2">
-                        <motion.div animate={{ height: [8, 2, 8] }} transition={{ repeat: Infinity, duration: 3, delay: 1 }} className="w-2 h-2 rounded-full bg-indigo-900" />
-                        <motion.div animate={{ height: [8, 2, 8] }} transition={{ repeat: Infinity, duration: 3, delay: 1.2 }} className="w-2 h-2 rounded-full bg-indigo-900" />
-                    </div>
-                </div>
-                {/* Body */}
-                <div className="w-16 h-12 mt-2 rounded-xl backdrop-blur-sm border relative bg-indigo-500/20 border-white/10"></div>
-            </motion.div>
-
-            {/* 3. Floating Laptop */}
-            <motion.div
-                className="absolute top-[60%] left-1/2 -translate-x-1/2 w-48 h-32 z-30 preserve-3d will-change-transform"
-                style={{ transform: "translateZ(80px) rotateX(10deg)" }}
-            >
-                {/* Screen */}
-                <div className="w-full h-full rounded-t-xl border border-b-0 p-3 overflow-hidden backdrop-blur-md bg-black/80 border-white/10">
-                    <div className="space-y-1 mt-4">
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: [0, 0.8, 0.8] }}
-                            transition={{ repeat: Infinity, duration: 3 }}
-                            className="h-1 rounded-full bg-indigo-400/50 origin-left"
-                        />
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: [0, 0.6, 0.6] }}
-                            transition={{ repeat: Infinity, duration: 3, delay: 0.5 }}
-                            className="h-1 rounded-full bg-purple-400/50 origin-left"
-                        />
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: [0, 0.4, 0.4] }}
-                            transition={{ repeat: Infinity, duration: 3, delay: 1.0 }}
-                            className="h-1 rounded-full bg-cyan-400/50 origin-left"
-                        />
-                    </div>
-                </div>
-                {/* Base */}
-                <div className="w-[120%] -ml-[10%] h-3 rounded-b-lg shadow-xl relative top-[-1px] bg-slate-700" />
-            </motion.div>
-
-            {/* 4. Orbiting Icons */}
-            {[Code2, Laptop, Cpu, Globe].map((Icon, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute top-1/2 left-1/2 w-10 h-10 rounded-xl flex items-center justify-center backdrop-blur-sm text-indigo-300 will-change-transform"
-                    style={{
-                        background: 'var(--theme-surface)',
-                        border: '1px solid var(--theme-border)',
-                    }}
-                    animate={{
-                        rotate: [0, 360],
-                        x: [Math.cos(i * Math.PI / 2) * 120, Math.cos(i * Math.PI / 2 + Math.PI) * 120],
-                        y: [Math.sin(i * Math.PI / 2) * 40, Math.sin(i * Math.PI / 2 + Math.PI) * 40],
-                        scale: [0.8, 1, 0.8]
-                    }}
-                    transition={{ duration: 12 + i * 2, repeat: Infinity, ease: "linear", repeatType: "reverse" }}
-                >
-                    <Icon size={20} />
-                </motion.div>
-            ))}
+        <div className="relative w-full h-[400px] flex items-center justify-center">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-indigo-500/20 rounded-full blur-[80px]" />
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-none" />
         </div>
     );
 });
@@ -184,7 +276,7 @@ const Hero = () => {
                         </motion.div>
 
                         <motion.div className="relative h-[500px] flex items-center justify-center perspective-1000" style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}>
-                            <BotScene />
+                            <ParticleSphere />
                         </motion.div>
                     </div>
                 )}
@@ -213,7 +305,7 @@ const Hero = () => {
                             Building scalable software applications and integrating machine learning models into production.
                         </p>
                         <div className="my-8">
-                            <BotScene />
+                            <ParticleSphere />
                         </div>
                         <a
                             href="#projects"
