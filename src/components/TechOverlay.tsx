@@ -102,10 +102,11 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
                 >
                     {/* Main HUD Bar */}
                     <div
-                        className="px-4 py-2 rounded-lg flex items-center gap-4 shadow-2xl backdrop-blur-xl border border-white/10 relative overflow-hidden"
+                        className="px-4 py-2 rounded-lg flex items-center gap-4 shadow-2xl backdrop-blur-xl border relative overflow-hidden"
                         style={{
-                            background: 'var(--theme-dock-bg)', // Consistent with Dock
+                            background: 'var(--theme-dock-bg)',
                             color: 'var(--theme-text-secondary)',
+                            borderColor: 'var(--theme-border)',
                         }}
                     >
                         {/* Grid Background Effect */}
@@ -119,7 +120,7 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
                             <span className="font-bold text-emerald-500">ONLINE</span>
                         </div>
 
-                        <div className="w-[1px] h-3 bg-white/10 relative z-10" />
+                        <div className="w-[1px] h-3 relative z-10" style={{ background: 'var(--theme-border)' }} />
 
                         {/* FPS */}
                         <div className="flex items-center gap-1.5 relative z-10">
@@ -127,7 +128,7 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
                             <span ref={fpsRef}>60</span>
                         </div>
 
-                        <div className="w-[1px] h-3 bg-white/10 relative z-10" />
+                        <div className="w-[1px] h-3 relative z-10" style={{ background: 'var(--theme-border)' }} />
 
                         {/* Memory (if available) */}
                         <div className="flex items-center gap-1.5 relative z-10">
@@ -135,7 +136,7 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
                             <span ref={memRef}>--</span>
                         </div>
 
-                        <div className="w-[1px] h-3 bg-white/10 relative z-10" />
+                        <div className="w-[1px] h-3 relative z-10" style={{ background: 'var(--theme-border)' }} />
 
                         {/* Network */}
                         <div className="flex items-center gap-1.5 relative z-10">
@@ -147,23 +148,23 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
                     {/* Secondary Info Row (Coordinates & Scroll) */}
                     <div className="flex items-center justify-between gap-2 px-1">
                         <div
-                            className="px-3 py-1.5 rounded-md flex items-center gap-2 backdrop-blur-md border border-white/5"
-                            style={{ background: 'rgba(0,0,0,0.4)' }}
+                            className="px-3 py-1.5 rounded-md flex items-center gap-2 backdrop-blur-md border"
+                            style={{ background: 'var(--theme-dock-bg)', borderColor: 'var(--theme-border)', color: 'var(--theme-text-secondary)' }}
                         >
                             <span ref={mouseRef} className="opacity-80 tabular-nums">X:0000 Y:0000</span>
                         </div>
 
                         <div
-                            className="px-3 py-1.5 rounded-md flex items-center gap-2 backdrop-blur-md border border-white/5"
-                            style={{ background: 'rgba(0,0,0,0.4)' }}
+                            className="px-3 py-1.5 rounded-md flex items-center gap-2 backdrop-blur-md border"
+                            style={{ background: 'var(--theme-dock-bg)', borderColor: 'var(--theme-border)', color: 'var(--theme-text-secondary)' }}
                         >
                             <span className="opacity-50">SCR</span>
                             <span ref={scrollRef} className="tabular-nums">0%</span>
                         </div>
 
                         <div
-                            className="px-3 py-1.5 rounded-md flex items-center gap-2 backdrop-blur-md border border-white/5"
-                            style={{ background: 'rgba(0,0,0,0.4)' }}
+                            className="px-3 py-1.5 rounded-md flex items-center gap-2 backdrop-blur-md border"
+                            style={{ background: 'var(--theme-dock-bg)', borderColor: 'var(--theme-border)', color: 'var(--theme-text-secondary)' }}
                         >
                             <span className="opacity-50">VP</span>
                             <span className="tabular-nums">{windowSize.w}x{windowSize.h}</span>
