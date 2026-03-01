@@ -11,27 +11,35 @@ const ParticleSphere = memo(() => {
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true });
         if (!ctx) return;
 
         let animationFrameId: number;
 
-        const particleCount = 250;
+        // Optimizations: slightly fewer particles but longer connection distance
+        const particleCount = 200;
         const sphereRadius = 140;
         const particles: any[] = [];
         const baseSize = 1.2;
+        const maxLineDist = 60; // Increased distance to compensate for fewer particles
+        const maxLineDistSq = maxLineDist * maxLineDist;
 
+        // High DPI Support for Retina screens
         const updateSize = () => {
             const parent = canvas.parentElement;
             if (parent) {
-                canvas.width = parent.clientWidth;
-                canvas.height = parent.clientHeight;
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = parent.clientWidth * dpr;
+                canvas.height = parent.clientHeight * dpr;
+                canvas.style.width = `${parent.clientWidth}px`;
+                canvas.style.height = `${parent.clientHeight}px`;
+                ctx.scale(dpr, dpr);
             }
         };
         updateSize();
         window.addEventListener('resize', updateSize);
 
-        // Fibonacci sphere
+        // Fibonacci sphere initialization with velocity vectors
         for (let i = 0; i < particleCount; i++) {
             const phi = Math.acos(1 - 2 * (i + 0.5) / particleCount);
             const theta = Math.PI * (1 + Math.sqrt(5)) * i;
@@ -43,6 +51,9 @@ const ParticleSphere = memo(() => {
                 baseX: sphereRadius * Math.sin(phi) * Math.cos(theta),
                 baseY: sphereRadius * Math.sin(phi) * Math.sin(theta),
                 baseZ: sphereRadius * Math.cos(phi),
+                vx: 0,
+                vy: 0,
+                vz: 0
             });
         }
 
@@ -54,47 +65,74 @@ const ParticleSphere = memo(() => {
 
         let angleX = 0;
         let angleY = 0;
+        let targetAngleX = 0.0015;
+        let targetAngleY = 0.002;
 
         let mouseX = -9999;
         let mouseY = -9999;
+        let isHovering = false;
 
         const handleMouseMove = (e: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
             mouseX = e.clientX - rect.left;
             mouseY = e.clientY - rect.top;
+            isHovering = true;
+
+            // Subtly rotate sphere based on mouse position
+            const normalizedX = (mouseX / rect.width) - 0.5;
+            const normalizedY = (mouseY / rect.height) - 0.5;
+            targetAngleX = 0.0015 + (normalizedY * 0.01);
+            targetAngleY = 0.002 + (normalizedX * 0.01);
         };
         const handleMouseLeave = () => {
             mouseX = -9999;
             mouseY = -9999;
+            isHovering = false;
+            targetAngleX = 0.0015;
+            targetAngleY = 0.002;
         };
 
-        canvas.addEventListener('mousemove', handleMouseMove);
-        canvas.addEventListener('mouseleave', handleMouseLeave);
+        canvas.addEventListener('mousemove', handleMouseMove, { passive: true });
+        canvas.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+
+        // Physics tuning
+        const spring = 0.03;
+        const friction = 0.85;
+        const hoverForce = 6;
+        const maxHoverDist = 120;
 
         const draw = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
+            // Use client width/height since context is scaled
+            const cw = canvas.clientWidth;
+            const ch = canvas.clientHeight;
+            ctx.clearRect(0, 0, cw, ch);
 
-            angleX += 0.0015;
-            angleY += 0.002;
+            const centerX = cw / 2;
+            const centerY = ch / 2;
+
+            // Smooth rotation easing
+            angleX += (targetAngleX - 0) * 0.1; // Direct incremental rotation
+            angleY += (targetAngleY - 0) * 0.1;
 
             const cosX = Math.cos(angleX);
             const sinX = Math.sin(angleX);
             const cosY = Math.cos(angleY);
             const sinY = Math.sin(angleY);
 
+            // 1. Process Physics & 3D Projection
             const projected = particles.map(p => {
-                // Spring back to base position
-                p.x += (p.baseX - p.x) * 0.05;
-                p.y += (p.baseY - p.y) * 0.05;
-                p.z += (p.baseZ - p.z) * 0.05;
+                // Apply Spring Force towards base position
+                const ax = (p.baseX - p.x) * spring;
+                const ay = (p.baseY - p.y) * spring;
+                const az = (p.baseZ - p.z) * spring;
 
-                // Rotate Y
+                p.vx += ax;
+                p.vy += ay;
+                p.vz += az;
+
+                // Rotate Base Coordinates to screen space for interaction
                 let tempX = p.x * cosY - p.z * sinY;
                 let tempZ = p.z * cosY + p.x * sinY;
-
-                // Rotate X
                 let tempY = p.y * cosX - tempZ * sinX;
                 let finalZ = tempZ * cosX + p.y * sinX;
 
@@ -102,58 +140,82 @@ const ParticleSphere = memo(() => {
                 const screenX = centerX + tempX;
                 const screenY = centerY + tempY;
 
-                const dx = screenX - mouseX;
-                const dy = screenY - mouseY;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const maxDist = 100;
+                if (isHovering) {
+                    const dx = screenX - mouseX;
+                    const dy = screenY - mouseY;
+                    const distSq = dx * dx + dy * dy;
 
-                if (dist < maxDist) {
-                    const force = (maxDist - dist) / maxDist;
-                    p.x += (dx / dist) * force * 4;
-                    p.y += (dy / dist) * force * 4;
-                    p.z -= force * 4;
+                    if (distSq < maxHoverDist * maxHoverDist) {
+                        const dist = Math.sqrt(distSq);
+                        const force = (maxHoverDist - dist) / maxHoverDist;
+                        p.vx += (dx / dist) * force * hoverForce;
+                        p.vy += (dy / dist) * force * hoverForce;
+                        p.vz -= force * hoverForce;
+                    }
                 }
+
+                // Apply velocity and friction
+                p.vx *= friction;
+                p.vy *= friction;
+                p.vz *= friction;
+
+                p.x += p.vx;
+                p.y += p.vy;
+                p.z += p.vz;
 
                 return {
                     x: tempX,
                     y: tempY,
                     z: finalZ,
                 };
-            }).sort((a, b) => a.z - b.z);
+            });
 
-            const maxLineDist = 45;
+            // 2. Sort for proper Z-indexing painter's algorithm
+            projected.sort((a, b) => a.z - b.z);
+
             ctx.lineWidth = 0.5;
-
-            const dotColor = isDarkMode ? '129, 140, 248' : '79, 70, 229'; // indigo-400 / indigo-600
+            const dotColor = isDarkMode ? '129, 140, 248' : '79, 70, 229'; // indigo-400 : indigo-600
             const lineColor = isDarkMode ? '99, 102, 241' : '99, 102, 241'; // indigo-500
 
-            projected.forEach((p, i) => {
+            // 3. Render
+            for (let i = 0; i < projected.length; i++) {
+                const p = projected[i];
                 const scale = (sphereRadius + p.z) / (sphereRadius * 2);
+
+                // Skip rendering elements too far back/hidden
+                if (scale < 0.1) continue;
+
                 const size = baseSize * (0.5 + scale);
-                const alpha = Math.max(0.1, scale);
+                const alpha = Math.max(0.1, scale * 1.2);
 
-                ctx.beginPath();
-                ctx.arc(centerX + p.x, centerY + p.y, size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${dotColor}, ${alpha})`;
-                ctx.fill();
-
+                // Draw Connections
                 for (let j = i + 1; j < projected.length; j++) {
                     const p2 = projected[j];
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
+
+                    // Quick reject on 2D screen space before doing expensive 3D distance
+                    if (Math.abs(dx) > maxLineDist || Math.abs(dy) > maxLineDist) continue;
+
                     const dz = p.z - p2.z;
                     const distSq = dx * dx + dy * dy + dz * dz;
 
-                    if (distSq < maxLineDist * maxLineDist) {
+                    if (distSq < maxLineDistSq) {
                         const distAlpha = (1 - Math.sqrt(distSq) / maxLineDist) * alpha;
                         ctx.beginPath();
                         ctx.moveTo(centerX + p.x, centerY + p.y);
                         ctx.lineTo(centerX + p2.x, centerY + p2.y);
-                        ctx.strokeStyle = `rgba(${lineColor}, ${distAlpha * 0.4})`;
+                        ctx.strokeStyle = `rgba(${lineColor}, ${distAlpha * 0.5})`;
                         ctx.stroke();
                     }
                 }
-            });
+
+                // Draw Dot
+                ctx.beginPath();
+                ctx.arc(centerX + p.x, centerY + p.y, size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${dotColor}, ${alpha})`;
+                ctx.fill();
+            }
 
             animationFrameId = requestAnimationFrame(draw);
         };
