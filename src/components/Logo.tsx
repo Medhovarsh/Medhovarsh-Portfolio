@@ -19,9 +19,9 @@ const Logo = () => {
                 aria-label="Home"
             >
                 <svg
-                    width="28"
+                    width="34"
                     height="28"
-                    viewBox="0 0 100 100"
+                    viewBox="0 0 120 100"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     style={{ color: 'var(--theme-text-primary)' }}
@@ -29,7 +29,7 @@ const Logo = () => {
                 >
                     {/* Letter M */}
                     <motion.path
-                        d="M 15 80 V 25 L 35 55 L 55 25 V 80"
+                        d="M 10 80 V 25 L 35 55 L 60 25 V 80"
                         stroke="var(--theme-text-primary)"
                         strokeWidth="15"
                         strokeLinecap="round"
@@ -40,7 +40,7 @@ const Logo = () => {
                     />
                     {/* Letter B */}
                     <motion.path
-                        d="M 55 25 H 75 C 88 25 88 52.5 75 52.5 C 90 52.5 90 80 75 80 H 55"
+                        d="M 60 25 H 85 C 104 25 104 52.5 85 52.5 C 106 52.5 106 80 85 80 H 60"
                         stroke="var(--theme-text-primary)"
                         strokeWidth="15"
                         strokeLinecap="round"
@@ -51,7 +51,7 @@ const Logo = () => {
                     />
                     {/* Unique Accent Dot */}
                     <motion.circle
-                        cx="88"
+                        cx="103"
                         cy="80"
                         r="8"
                         fill="var(--theme-accent)"
