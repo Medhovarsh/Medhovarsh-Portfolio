@@ -310,7 +310,7 @@ const Hero = () => {
                                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1] text-glow-white break-words">
                                             <WordReveal text={name.split(' ')[0]} />
                                             <motion.span
-                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block mt-2"
+                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block mt-2 pb-4"
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -386,7 +386,7 @@ const Hero = () => {
                                 className="text-4xl sm:text-5xl font-black tracking-tight leading-[1] text-balance text-glow-white break-words"
                             >
                                 {name.split(' ')[0]} <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 mt-2 block">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 mt-2 block pb-4">
                                     {name.split(' ')[1]}
                                 </span>
                             </motion.h1>
