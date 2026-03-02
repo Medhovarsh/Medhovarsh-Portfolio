@@ -269,14 +269,16 @@ const Hero = () => {
                 {/* Ambient Orbs */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <motion.div
-                        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] opacity-20 mix-blend-screen"
+                        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full blur-[120px] mix-blend-screen"
                         animate={{ scale: [1, 1.05, 1], opacity: [0.1, 0.15, 0.1] }}
                         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+                        style={{ background: 'var(--theme-aurora-1)' }}
                     />
                     <motion.div
-                        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gray-500/10 rounded-full blur-[120px] opacity-20 mix-blend-screen"
+                        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full blur-[120px] mix-blend-screen"
                         animate={{ scale: [1, 1.08, 1], opacity: [0.1, 0.2, 0.1] }}
                         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                        style={{ background: 'var(--theme-aurora-2)' }}
                     />
                 </div>
 
@@ -295,17 +297,21 @@ const Hero = () => {
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-                                            className="inline-flex self-start items-center gap-3 px-5 py-2.5 rounded-full text-[11px] font-bold tracking-[0.25em] uppercase backdrop-blur-md border border-white/10 bg-white/5 shadow-2xl mb-4"
-                                            style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                                            className="inline-flex self-start items-center gap-3 px-5 py-2.5 rounded-full text-[11px] font-bold tracking-[0.25em] uppercase backdrop-blur-md shadow-2xl mb-4"
+                                            style={{
+                                                color: 'var(--theme-text-primary)',
+                                                background: 'var(--theme-glass-bg)',
+                                                border: '1px solid var(--theme-accent-border)'
+                                            }}
                                         >
-                                            <span className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
+                                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--theme-text-primary)' }} />
                                             {portfolioData.personalInfo.title}
                                         </motion.div>
 
                                         {/* Animated headline */}
-                                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight text-white pb-4">
+                                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight pb-4" style={{ color: 'var(--theme-text-primary)' }}>
                                             <div className="mb-2"><WordReveal text={name.split(' ')[0]} /></div>
-                                            <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block leading-normal">
+                                            <div className="block leading-normal" style={{ color: 'var(--theme-text-secondary)' }}>
                                                 <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
                                             </div>
                                         </h1>
@@ -315,7 +321,8 @@ const Hero = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.1, duration: 0.6 }}
-                                        className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-balance text-gray-400"
+                                        className="max-w-xl text-lg md:text-xl font-light leading-relaxed text-balance"
+                                        style={{ color: 'var(--theme-text-secondary)' }}
                                     >
                                         Building scalable software applications and integrating machine learning models into production.
                                     </motion.p>
@@ -362,29 +369,38 @@ const Hero = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold tracking-[0.25em] uppercase backdrop-blur-md border border-white/10 bg-white/5 shadow-xl mb-6"
-                                style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold tracking-[0.25em] uppercase backdrop-blur-md shadow-xl mb-6"
+                                style={{
+                                    color: 'var(--theme-text-primary)',
+                                    background: 'var(--theme-glass-bg)',
+                                    border: '1px solid var(--theme-accent-border)'
+                                }}
                             >
-                                <span className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
+                                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--theme-text-primary)' }} />
                                 {portfolioData.personalInfo.title}
                             </motion.div>
-                            <div className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance text-white pb-4">
+
+                            <div className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance pb-4" style={{ color: 'var(--theme-text-primary)' }}>
                                 <div className="mb-2"><WordReveal text={name.split(' ')[0]} /></div>
-                                <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block leading-normal">
+                                <div className="block leading-normal" style={{ color: 'var(--theme-text-secondary)' }}>
                                     <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
                                 </div>
                             </div>
+
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.7 }}
-                                className="text-base font-medium max-w-sm leading-relaxed text-balance text-gray-400"
+                                className="text-base font-normal max-w-sm leading-relaxed text-balance"
+                                style={{ color: 'var(--theme-text-secondary)' }}
                             >
                                 Building scalable software applications and integrating machine learning models into production.
                             </motion.p>
+
                             <div className="my-8">
                                 <ParticleSphere />
                             </div>
+
                             <motion.a
                                 href="#projects"
                                 initial={{ opacity: 0, y: 10 }}
@@ -409,7 +425,7 @@ const Hero = () => {
             >
                 <ChevronDown size={24} strokeWidth={1.5} />
             </motion.div>
-        </section >
+        </section>
     );
 };
 

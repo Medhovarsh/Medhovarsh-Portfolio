@@ -29,7 +29,7 @@ const Logo = () => {
                 <motion.path
                     d="M 15 80 V 25 L 35 55 L 55 25 V 80"
                     stroke="currentColor"
-                    strokeWidth="8"
+                    strokeWidth="12"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     initial={{ pathLength: 0, opacity: 0 }}
@@ -40,12 +40,22 @@ const Logo = () => {
                 <motion.path
                     d="M 55 25 H 75 C 88 25 88 52.5 75 52.5 C 90 52.5 90 80 75 80 H 55"
                     stroke="currentColor"
-                    strokeWidth="8"
+                    strokeWidth="12"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, ease: "easeInOut", delay: 0.6 }}
+                />
+                {/* Unique Accent Dot */}
+                <motion.circle
+                    cx="88"
+                    cy="80"
+                    r="6"
+                    fill="var(--theme-accent)"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "backOut", delay: 1.2 }}
                 />
             </svg>
         </motion.a>
