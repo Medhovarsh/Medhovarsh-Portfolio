@@ -7,11 +7,11 @@ const Logo = () => {
             <motion.a
                 href="#home"
                 id="logo"
-                className="flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-2xl transition-all duration-500 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] group"
+                className="flex items-center justify-center w-16 h-16 rounded-full backdrop-blur-2xl transition-all duration-500 hover:scale-110 hover:shadow-2xl group"
                 style={{
-                    background: 'var(--theme-glass-bg)',
-                    border: '1px solid var(--theme-glass-border)',
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    background: 'var(--theme-accent-surface)',
+                    border: '1px solid var(--theme-accent-border)',
+                    boxShadow: '0 8px 32px 0 var(--theme-shadow)',
                 }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
