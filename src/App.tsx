@@ -93,7 +93,7 @@ function App() {
               whileTap={{ scale: 0.92, rotate: -5 }}
               transition={{ delay: 0.8, type: 'spring', stiffness: 400, damping: 17 }}
               onClick={() => setIsTechSpecsOpen(prev => !prev)}
-              className="fixed top-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
+              className="fixed bottom-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
               style={{
                 background: isTechSpecsOpen ? 'var(--theme-accent-surface)' : 'var(--theme-glass-bg)',
                 borderColor: isTechSpecsOpen ? 'var(--theme-accent)' : 'var(--theme-glass-border)',
