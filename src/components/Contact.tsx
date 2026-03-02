@@ -2,7 +2,6 @@ import { memo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Mail, ArrowUpRight, Phone, MapPin } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
-import MagneticHover from './MagneticHover';
 import { useRef } from 'react';
 
 const Contact = memo(() => {
@@ -63,7 +62,7 @@ const Contact = memo(() => {
                     transition={{ duration: 0.8 }}
                 >
                     <div
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-mono tracking-[0.4em] font-black mb-12"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono tracking-widest font-black mb-12 uppercase"
                         style={{
                             border: '1px solid var(--theme-accent-border)',
                             background: 'var(--theme-accent-surface)',
@@ -74,7 +73,7 @@ const Contact = memo(() => {
                         Open to Opportunities
                     </div>
 
-                    <h2 className="text-5xl md:text-8xl font-black mb-10 tracking-ultra-tight leading-[0.9]">
+                    <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-ultra-tight leading-[0.9]">
                         Let's build the <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-400">future</span>
                     </h2>
@@ -93,24 +92,22 @@ const Contact = memo(() => {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     className="flex justify-center mb-20"
                 >
-                    <MagneticHover strength={0.4}>
-                        <motion.a
-                            href={`mailto:${portfolioData.personalInfo.email}?subject=${encodeURIComponent("Let's Connect — From Your Portfolio")}&body=${encodeURIComponent("Hi Medhovarsh,\n\nI came across your portfolio and would love to connect.\n\n")}`}
-                            whileHover={{ scale: 1.05, y: -3 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="group relative inline-flex items-center justify-center px-8 md:px-12 py-4 md:py-5 rounded-full font-black text-xs tracking-[0.2em] overflow-hidden shadow-xl transition-all"
-                            style={{
-                                background: 'var(--theme-accent)',
-                                color: 'white',
-                                boxShadow: '0 8px 30px var(--theme-accent-surface)',
-                            }}
-                        >
-                            <span className="relative z-10 flex items-center gap-4">
-                                Say Hello <Mail size={16} strokeWidth={3} className="group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
-                            </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
-                        </motion.a>
-                    </MagneticHover>
+                    <motion.a
+                        href={`mailto:${portfolioData.personalInfo.email}?subject=${encodeURIComponent("Let's Connect — From Your Portfolio")}&body=${encodeURIComponent("Hi Medhovarsh,\n\nI came across your portfolio and would love to connect.\n\n")}`}
+                        whileHover={{ scale: 1.05, y: -3 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group relative inline-flex items-center justify-center px-8 md:px-12 py-4 md:py-5 rounded-full font-black text-xs tracking-widest overflow-hidden shadow-xl transition-all uppercase"
+                        style={{
+                            background: 'var(--theme-accent)',
+                            color: 'white',
+                            boxShadow: '0 8px 30px var(--theme-accent-surface)',
+                        }}
+                    >
+                        <span className="relative z-10 flex items-center gap-4">
+                            Say Hello <Mail size={16} strokeWidth={3} className="group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
+                    </motion.a>
                 </motion.div>
 
                 {/* Footer */}
@@ -161,7 +158,7 @@ const Contact = memo(() => {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center gap-1.5 hover:text-indigo-500 transition-all text-[11px] font-bold tracking-[0.2em] uppercase"
+                                className="group inline-flex items-center gap-1.5 hover:text-indigo-500 transition-all text-xs font-bold tracking-widest uppercase"
                                 style={{ color: 'var(--theme-text-muted)' }}
                                 whileHover={{ y: -2 }}
                             >
@@ -171,13 +168,13 @@ const Contact = memo(() => {
                         ))}
                     </div>
 
-                    <p className="text-[9px] font-mono tracking-[0.4em] uppercase" style={{ color: 'var(--theme-text-muted)', opacity: 0.7 }}>
+                    <p className="text-xs font-mono tracking-widest uppercase" style={{ color: 'var(--theme-text-muted)', opacity: 0.7 }}>
                         © {new Date().getFullYear()} {portfolioData.personalInfo.name} · Champaign, IL
                     </p>
                 </motion.div>
 
-            </div>
-        </section>
+            </div >
+        </section >
     );
 });
 

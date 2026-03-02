@@ -1,7 +1,7 @@
 import { useRef, useEffect, memo, useState } from 'react';
 import {
     motion,
-    useMotionValue, useSpring, useTransform,
+    useTransform,
     useScroll, AnimatePresence,
 } from 'framer-motion';
 import { portfolioData } from '../data/portfolio';
@@ -194,26 +194,7 @@ const ParticleSphere = memo(() => {
 
     return (
         <div className="relative w-full h-[400px] flex items-center justify-center">
-            {/* Pulsing ring around sphere */}
-            <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-indigo-500/20"
-                animate={{
-                    width: ['220px', '280px', '220px'],
-                    height: ['220px', '280px', '220px'],
-                    opacity: [0.4, 0.1, 0.4],
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-indigo-500/10"
-                animate={{
-                    width: ['260px', '320px', '260px'],
-                    height: ['260px', '320px', '260px'],
-                    opacity: [0.2, 0.05, 0.2],
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-            />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-indigo-500/20 rounded-full blur-[80px]" />
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-none" />
             <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-none" />
         </div>
     );
@@ -258,14 +239,7 @@ const Hero = () => {
     const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
     const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-    /* ── CURSOR / PARALLAX ── */
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const smoothX = useSpring(mouseX, { damping: 20, stiffness: 300 });
-    const smoothY = useSpring(mouseY, { damping: 20, stiffness: 300 });
 
-    const rotateX = useTransform(smoothY, [0, 800], [5, -5]);
-    const rotateY = useTransform(smoothX, [0, 1400], [-5, 5]);
 
     useEffect(() => {
         setMounted(true);
@@ -275,23 +249,10 @@ const Hero = () => {
         handleResize();
         window.addEventListener('resize', handleResize);
 
-        const handleMove = (e: MouseEvent) => {
-            if (containerRef.current) {
-                const rect = containerRef.current.getBoundingClientRect();
-                mouseX.set(e.clientX - rect.left);
-                mouseY.set(e.clientY - rect.top);
-            } else {
-                mouseX.set(e.clientX);
-                mouseY.set(e.clientY);
-            }
-        };
-        window.addEventListener('mousemove', handleMove);
-
         return () => {
             window.removeEventListener('resize', handleResize);
-            window.removeEventListener('mousemove', handleMove);
         };
-    }, [mouseX, mouseY]);
+    }, []);
 
     return (
         <section
@@ -325,10 +286,8 @@ const Hero = () => {
                     <AnimatePresence>
                         {viewMode === 'desktop' && mounted && (
                             <div ref={containerRef} className="grid grid-cols-2 gap-12 items-center relative min-h-[600px]">
-                                {/* Left — Text */}
                                 <motion.div
                                     className="flex flex-col justify-center text-left gap-6"
-                                    style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                                 >
                                     <motion.div className="flex flex-col gap-4">
                                         {/* Eyebrow badge */}
@@ -348,10 +307,10 @@ const Hero = () => {
                                         </motion.div>
 
                                         {/* Animated headline */}
-                                        <h1 className="text-[clamp(3rem,6vw,5.5rem)] font-black tracking-ultra-tight leading-[0.85] text-glow-white">
+                                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1] text-glow-white break-words">
                                             <WordReveal text={name.split(' ')[0]} />
                                             <motion.span
-                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block"
+                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block mt-2"
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -395,8 +354,7 @@ const Hero = () => {
 
                                 {/* Right — Particle Sphere */}
                                 <motion.div
-                                    className="relative h-[500px] flex items-center justify-center perspective-1000"
-                                    style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+                                    className="relative h-[500px] flex items-center justify-center p-8"
                                     initial={{ opacity: 0, scale: 0.85 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -425,13 +383,10 @@ const Hero = () => {
                                 {portfolioData.personalInfo.title}
                             </motion.div>
                             <motion.h1
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                className="text-4xl font-black leading-[0.9] tracking-ultra-tight text-balance text-glow-white"
+                                className="text-4xl sm:text-5xl font-black tracking-tight leading-[1] text-balance text-glow-white break-words"
                             >
                                 {name.split(' ')[0]} <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 mt-2 block">
                                     {name.split(' ')[1]}
                                 </span>
                             </motion.h1>

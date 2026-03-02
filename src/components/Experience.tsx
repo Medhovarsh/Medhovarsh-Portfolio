@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { portfolioData } from '../data/portfolio';
 import { Calendar, MapPin, ArrowUpRight, Briefcase } from 'lucide-react';
-import { SpotlightCard } from './MagneticHover';
+
 import { useRef } from 'react';
 
 const Experience = memo(() => {
@@ -32,7 +32,7 @@ const Experience = memo(() => {
                 >
                     <div className="inline-flex items-center gap-3 mb-8">
                         <span className="w-8 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
-                        <span className="text-[10px] font-mono tracking-[0.4em] font-black" style={{ color: 'var(--theme-accent-light)' }}>Career Path</span>
+                        <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>Career Path</span>
                         <span className="w-8 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black tracking-ultra-tight leading-[0.9]">Experience</h2>
@@ -47,7 +47,7 @@ const Experience = memo(() => {
                             viewport={{ once: true, margin: "-80px" }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
-                            <SpotlightCard className="glass-card group relative overflow-hidden">
+                            <div className="glass-card group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-indigo-500/30">
                                 {/* Decorative accent */}
                                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-indigo-500 via-blue-500 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
                                 <div className="absolute top-0 right-0 w-48 h-48 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'var(--theme-accent-surface)' }} />
@@ -81,11 +81,11 @@ const Experience = memo(() => {
 
                                         {/* Duration & Location */}
                                         <div className="space-y-2 mt-auto">
-                                            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest" style={{ color: 'var(--theme-accent-light)' }}>
+                                            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest" style={{ color: 'var(--theme-accent-light)' }}>
                                                 <Calendar size={12} strokeWidth={2} />
                                                 {role.duration}
                                             </div>
-                                            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest" style={{ color: 'var(--theme-text-muted)' }}>
+                                            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest" style={{ color: 'var(--theme-text-muted)' }}>
                                                 <MapPin size={12} strokeWidth={2} />
                                                 {role.location}
                                             </div>
@@ -97,7 +97,7 @@ const Experience = memo(() => {
                                                 href={role.link.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-[0.15em] hover:text-white hover:bg-indigo-500 transition-all group/link"
+                                                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest hover:text-white hover:bg-indigo-500 transition-all group/link"
                                                 style={{
                                                     color: 'var(--theme-accent-light)',
                                                     background: 'var(--theme-accent-surface)',
@@ -116,7 +116,7 @@ const Experience = memo(() => {
                                     <div className="p-8 md:p-10 flex flex-col justify-center">
                                         <div className="flex items-center gap-2 mb-6">
                                             <span className="w-2 h-2 rounded-full" style={{ background: 'var(--theme-accent)' }} />
-                                            <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em]" style={{ color: 'var(--theme-text-muted)' }}>
+                                            <span className="text-xs font-mono font-black uppercase tracking-widest" style={{ color: 'var(--theme-text-muted)' }}>
                                                 Key Contributions
                                             </span>
                                         </div>
@@ -143,7 +143,7 @@ const Experience = memo(() => {
                                         </ul>
                                     </div>
                                 </div>
-                            </SpotlightCard>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

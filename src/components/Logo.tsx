@@ -5,33 +5,18 @@ const Logo = () => {
         <motion.a
             href="#home"
             id="logo"
-            className="fixed top-8 left-8 z-50 text-indigo-500"
+            className="fixed top-8 left-8 z-50 flex items-center gap-2 group"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             aria-label="Home"
         >
-            <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="overflow-visible"
-            >
-                <motion.path
-                    d="M10 32V8L20 22L30 8V32"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
-                    style={{ color: 'var(--theme-logo-stroke)' }}
-                />
-            </svg>
+            <div className="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white font-black text-xl tracking-tighter shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
+                MB
+            </div>
+            <span className="font-bold text-lg hidden md:block" style={{ color: 'var(--theme-text-primary)' }}>
+                Medhovarsh
+            </span>
         </motion.a>
     );
 };

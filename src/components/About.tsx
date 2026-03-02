@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { portfolioData } from '../data/portfolio';
 import { StaggerContainer, StaggerItem } from './ScrollReveal';
+import { GraduationCap, FileText, Lightbulb, Rocket } from 'lucide-react';
 
 /* ── Animated Counter ── */
 const CountUp = ({ target, suffix = '', duration = 1.5 }: { target: number; suffix?: string; duration?: number }) => {
@@ -28,10 +29,10 @@ const CountUp = ({ target, suffix = '', duration = 1.5 }: { target: number; suff
 };
 
 const stats = [
-    { label: 'GPA', value: 4, suffix: '.0', icon: '🎓' },
-    { label: 'Publications', value: 2, suffix: '+', icon: '📄' },
-    { label: 'Projects', value: 5, suffix: '+', icon: '💡' },
-    { label: 'Students Reached', value: 200, suffix: '+', icon: '🚀' },
+    { label: 'GPA', value: 4, suffix: '.0', icon: <GraduationCap size={24} /> },
+    { label: 'Publications', value: 2, suffix: '+', icon: <FileText size={24} /> },
+    { label: 'Projects', value: 5, suffix: '+', icon: <Lightbulb size={24} /> },
+    { label: 'Students Reached', value: 200, suffix: '+', icon: <Rocket size={24} /> },
 ];
 
 const About = () => {

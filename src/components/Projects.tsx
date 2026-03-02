@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import type { ElementType } from 'react';
 import { portfolioData } from '../data/portfolio';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
-import { SpotlightCard } from './MagneticHover';
+
 import { StaggerContainer, StaggerItem } from './ScrollReveal';
 
 const accentGradients = [
@@ -27,7 +27,7 @@ const Projects = memo(() => {
                 >
                     <div className="inline-flex items-center gap-3 mb-6">
                         <span className="w-8 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
-                        <span className="text-[10px] font-mono tracking-[0.4em] font-black" style={{ color: 'var(--theme-accent-light)' }}>Selected Work</span>
+                        <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>Selected Work</span>
                         <span className="w-8 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black tracking-ultra-tight leading-[0.9]">Featured Projects</h2>
@@ -44,8 +44,8 @@ const Projects = memo(() => {
 
                         return (
                             <StaggerItem key={index}>
-                                <SpotlightCard
-                                    className="glass-card group relative overflow-hidden project-card cursor-none"
+                                <div
+                                    className="glass-card group relative overflow-hidden project-card transition-all duration-300 hover:shadow-xl"
                                 >
                                     <CardTag
                                         {...cardProps}
@@ -74,7 +74,7 @@ const Projects = memo(() => {
                                                         >
                                                             0{index + 1}
                                                         </motion.span>
-                                                        <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: 'var(--theme-accent-light)' }}>
+                                                        <span className="text-xs font-mono uppercase tracking-widest" style={{ color: 'var(--theme-accent-light)' }}>
                                                             {project.duration}
                                                         </span>
                                                     </div>
@@ -91,8 +91,8 @@ const Projects = memo(() => {
 
                                                     {/* Link indicator */}
                                                     {isLink && (
-                                                        <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] group-hover:text-indigo-400 transition-colors mt-1" style={{ color: 'var(--theme-text-muted)' }}>
-                                                            <ExternalLink size={12} />
+                                                        <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest group-hover:text-indigo-400 transition-colors mt-1" style={{ color: 'var(--theme-text-muted)' }}>
+                                                            <ExternalLink size={14} />
                                                             View on GitHub
                                                             <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                                         </div>
@@ -104,8 +104,8 @@ const Projects = memo(() => {
                                                     {project.technologies.map((tech, i) => (
                                                         <motion.span
                                                             key={i}
-                                                            whileHover={{ y: -2, scale: 1.05 }}
-                                                            className="px-3 py-1.5 text-[11px] font-bold rounded-lg tracking-wide transition-colors"
+                                                            whileHover={{ y: -2 }}
+                                                            className="px-3 py-1.5 text-xs font-bold rounded-lg tracking-wide transition-colors"
                                                             style={{
                                                                 color: 'var(--theme-text-secondary)',
                                                                 background: 'var(--theme-accent-surface)',
@@ -122,7 +122,7 @@ const Projects = memo(() => {
                                             <div className="p-6 md:p-10 flex flex-col justify-center border-t md:border-t-0 md:border-l" style={{ borderColor: 'var(--theme-border)' }}>
                                                 <div className="flex items-center gap-2 mb-6">
                                                     <span className="w-2 h-2 rounded-full" style={{ background: 'var(--theme-accent)' }} />
-                                                    <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em]" style={{ color: 'var(--theme-text-muted)' }}>
+                                                    <span className="text-xs font-mono font-black uppercase tracking-widest" style={{ color: 'var(--theme-text-muted)' }}>
                                                         Key Highlights
                                                     </span>
                                                 </div>
@@ -150,7 +150,7 @@ const Projects = memo(() => {
                                             </div>
                                         </div>
                                     </CardTag>
-                                </SpotlightCard>
+                                </div>
                             </StaggerItem>
                         );
                     })}
