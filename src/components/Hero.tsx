@@ -321,7 +321,7 @@ const Hero = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.1, duration: 0.6 }}
-                                        className="max-w-xl text-lg md:text-xl font-light leading-relaxed text-balance"
+                                        className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-balance"
                                         style={{ color: 'var(--theme-text-secondary)' }}
                                     >
                                         Building scalable software applications and integrating machine learning models into production.
