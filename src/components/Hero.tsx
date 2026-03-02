@@ -295,9 +295,10 @@ const Hero = () => {
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-                                            className="text-sm md:text-base font-medium tracking-widest uppercase text-left w-full"
-                                            style={{ color: 'var(--theme-accent-light)', opacity: 0.8 }}
+                                            className="inline-flex self-start items-center gap-3 px-5 py-2.5 rounded-full text-[11px] font-bold tracking-[0.25em] uppercase backdrop-blur-md border border-white/10 bg-white/5 shadow-2xl mb-4"
+                                            style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                         >
+                                            <span className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
                                             {portfolioData.personalInfo.title}
                                         </motion.div>
 
@@ -319,8 +320,7 @@ const Hero = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.1, duration: 0.6 }}
-                                        className="max-w-md text-lg font-medium leading-relaxed text-balance"
-                                        style={{ color: 'var(--theme-text-secondary)' }}
+                                        className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-balance text-gray-400"
                                     >
                                         Building scalable software applications and integrating machine learning models into production.
                                     </motion.p>
@@ -367,9 +367,10 @@ const Hero = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="text-xs font-medium tracking-widest uppercase mb-2"
-                                style={{ color: 'var(--theme-accent-light)' }}
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold tracking-[0.25em] uppercase backdrop-blur-md border border-white/10 bg-white/5 shadow-xl mb-6"
+                                style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                             >
+                                <span className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
                                 {portfolioData.personalInfo.title}
                             </motion.div>
                             <motion.h1
@@ -384,8 +385,7 @@ const Hero = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.7 }}
-                                className="text-sm font-medium max-w-xs leading-relaxed text-balance"
-                                style={{ color: 'var(--theme-text-secondary)' }}
+                                className="text-base font-medium max-w-sm leading-relaxed text-balance text-gray-400"
                             >
                                 Building scalable software applications and integrating machine learning models into production.
                             </motion.p>
