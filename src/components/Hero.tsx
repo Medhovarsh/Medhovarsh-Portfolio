@@ -310,10 +310,10 @@ const Hero = () => {
 
                                         {/* Animated headline */}
                                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight pb-4">
-                                            <div className="mb-2 text-theme-accent">
+                                            <div className="mb-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-md">
                                                 <WordReveal text={name.split(' ')[0]} />
                                             </div>
-                                            <div className="block leading-normal" style={{ color: 'var(--theme-text-primary)' }}>
+                                            <div className="block leading-normal bg-gradient-to-b from-[var(--theme-text-primary)] to-[var(--theme-text-muted)] bg-clip-text text-transparent">
                                                 <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
                                             </div>
                                         </h1>
@@ -326,7 +326,7 @@ const Hero = () => {
                                         className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-balance"
                                         style={{ color: 'var(--theme-text-secondary)' }}
                                     >
-                                        Building scalable software applications and integrating machine learning models into production.
+                                        Architecting scalable full-stack systems and deploying high-performance machine learning models to solve complex engineering challenges.
                                     </motion.p>
 
                                     <motion.div
@@ -383,10 +383,10 @@ const Hero = () => {
                             </motion.div>
 
                             <div className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance pb-4">
-                                <div className="mb-2 text-theme-accent">
+                                <div className="mb-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-md">
                                     <WordReveal text={name.split(' ')[0]} />
                                 </div>
-                                <div className="block leading-normal" style={{ color: 'var(--theme-text-primary)' }}>
+                                <div className="block leading-normal bg-gradient-to-b from-[var(--theme-text-primary)] to-[var(--theme-text-muted)] bg-clip-text text-transparent">
                                     <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
                                 </div>
                             </div>
@@ -398,7 +398,7 @@ const Hero = () => {
                                 className="text-base font-normal max-w-sm leading-relaxed text-balance"
                                 style={{ color: 'var(--theme-text-secondary)' }}
                             >
-                                Building scalable software applications and integrating machine learning models into production.
+                                Architecting scalable full-stack systems and deploying high-performance machine learning models to solve complex engineering challenges.
                             </motion.p>
 
                             <div className="my-8">

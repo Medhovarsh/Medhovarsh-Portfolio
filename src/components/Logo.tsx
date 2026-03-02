@@ -10,7 +10,6 @@ const Logo = () => {
                 className="flex items-center justify-center w-16 h-16 rounded-full backdrop-blur-2xl transition-all duration-500 hover:scale-110 hover:shadow-2xl group"
                 style={{
                     background: 'var(--theme-accent-surface)',
-                    border: '1px solid var(--theme-accent-border)',
                     boxShadow: '0 8px 32px 0 var(--theme-shadow)',
                 }}
                 initial={{ opacity: 0, scale: 0.8 }}
