@@ -302,7 +302,7 @@ const Hero = () => {
                                         </motion.div>
 
                                         {/* Animated headline */}
-                                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter leading-[1] text-white break-words pb-4">
+                                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight text-white pb-4">
                                             <WordReveal text={name.split(' ')[0]} />
                                             <motion.span
                                                 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block pt-1 leading-normal"
@@ -373,7 +373,7 @@ const Hero = () => {
                                 {portfolioData.personalInfo.title}
                             </motion.div>
                             <motion.h1
-                                className="text-5xl sm:text-6xl font-extrabold tracking-tighter leading-[1.05] text-balance text-white break-words pb-4"
+                                className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance text-white pb-4"
                             >
                                 {name.split(' ')[0]} <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 pt-1 block leading-normal">
