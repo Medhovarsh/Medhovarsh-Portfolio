@@ -221,11 +221,9 @@ const ParticleSphere = memo(() => {
 
 
 /* ── Animated Headline ── */
-const words = ["Architecting", "Digital", "Intelligence"];
-
-const WordReveal = () => (
+const WordReveal = ({ text }: { text: string }) => (
     <div className="overflow-hidden">
-        {words.map((word, wi) => (
+        {text.split(' ').map((word, wi) => (
             <motion.span
                 key={wi}
                 className="inline-block mr-[0.25em]"
@@ -351,7 +349,7 @@ const Hero = () => {
 
                                         {/* Animated headline */}
                                         <h1 className="text-[clamp(3rem,6vw,5.5rem)] font-black tracking-ultra-tight leading-[0.85] text-glow-white">
-                                            <WordReveal />
+                                            <WordReveal text={name.split(' ')[0]} />
                                             <motion.span
                                                 className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block"
                                                 initial={{ opacity: 0, y: 20 }}
