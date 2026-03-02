@@ -323,7 +323,7 @@ const Hero = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.1, duration: 0.6 }}
-                                        className="max-w-xl text-lg md:text-xl font-medium leading-relaxed text-balance"
+                                        className="max-w-xl text-base md:text-lg font-normal leading-relaxed text-balance opacity-90"
                                         style={{ color: 'var(--theme-text-secondary)' }}
                                     >
                                         Architecting scalable full-stack systems and deploying high-performance machine learning models to solve complex engineering challenges.
@@ -395,7 +395,7 @@ const Hero = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.7 }}
-                                className="text-base font-normal max-w-sm leading-relaxed text-balance"
+                                className="text-sm font-normal max-w-sm leading-relaxed text-balance opacity-90"
                                 style={{ color: 'var(--theme-text-secondary)' }}
                             >
                                 Architecting scalable full-stack systems and deploying high-performance machine learning models to solve complex engineering challenges.
