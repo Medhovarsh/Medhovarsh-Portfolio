@@ -87,13 +87,13 @@ function App() {
 
             {/* Developer HUD Toggle */}
             <motion.button
-              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              whileHover={{ scale: 1.08, rotate: 5 }}
-              whileTap={{ scale: 0.92, rotate: -5 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.8, type: 'spring', stiffness: 400, damping: 17 }}
               onClick={() => setIsTechSpecsOpen(prev => !prev)}
-              className="fixed bottom-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
+              className="fixed top-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
               style={{
                 background: isTechSpecsOpen ? 'var(--theme-accent-surface)' : 'var(--theme-glass-bg)',
                 borderColor: isTechSpecsOpen ? 'var(--theme-accent)' : 'var(--theme-glass-border)',
