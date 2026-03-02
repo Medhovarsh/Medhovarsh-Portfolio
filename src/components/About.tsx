@@ -42,7 +42,7 @@ const About = () => {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none" style={{ background: 'var(--theme-accent-surface)' }} />
 
             <div className="max-w-5xl mx-auto relative z-10">
-                <div className="grid md:grid-cols-12 gap-12 md:gap-20 items-start">
+                <div className="grid md:grid-cols-12 gap-12 md:gap-20 items-center">
 
                     {/* Text — 7 cols */}
                     <motion.div
@@ -57,14 +57,14 @@ const About = () => {
                             <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>About Me</span>
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-semibold mb-8 tracking-tight leading-tight text-balance text-white">
+                        <h2 className="text-3xl md:text-5xl font-semibold mb-8 tracking-tight leading-tight text-balance" style={{ color: 'var(--theme-text-primary)' }}>
                             Bridging <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">
                                 AI Research &amp; Production
                             </span>
                         </h2>
 
-                        <div className="space-y-6 text-sm md:text-base font-light leading-relaxed text-gray-400">
+                        <div className="space-y-6 text-sm md:text-base font-light leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
                             <p className="text-balance">
                                 Currently pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
                                 I specialize in turning research-grade models into production systems — from
@@ -88,10 +88,14 @@ const About = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
                                     whileHover={{ y: -3, scale: 1.03 }}
-                                    className="p-4 rounded-2xl text-center border border-white/5 bg-transparent"
+                                    className="p-4 rounded-2xl text-center"
+                                    style={{
+                                        background: 'var(--theme-card-bg)',
+                                        border: '1px solid var(--theme-border)',
+                                    }}
                                 >
-                                    <div className="text-2xl mb-1 text-gray-500">{stat.icon}</div>
-                                    <div className="text-3xl font-bold text-white">
+                                    <div className="text-2xl mb-1" style={{ color: 'var(--theme-text-muted)' }}>{stat.icon}</div>
+                                    <div className="text-3xl font-bold" style={{ color: 'var(--theme-text-primary)' }}>
                                         <CountUp target={stat.value} suffix={stat.suffix} />
                                     </div>
                                     <div className="text-xs font-mono uppercase tracking-widest mt-1" style={{ color: 'var(--theme-text-muted)' }}>
@@ -136,8 +140,13 @@ const About = () => {
                                         {category.items.map((skill, i) => (
                                             <StaggerItem key={i}>
                                                 <motion.span
-                                                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
-                                                    className="inline-block px-3 py-1.5 text-xs font-medium rounded border border-white/10 bg-white/5 text-gray-300 transition-colors cursor-default"
+                                                    whileHover={{ scale: 1.05, filter: 'brightness(1.2)' }}
+                                                    className="inline-block px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-default"
+                                                    style={{
+                                                        background: 'var(--theme-glass-bg)',
+                                                        border: '1px solid var(--theme-glass-border)',
+                                                        color: 'var(--theme-text-secondary)'
+                                                    }}
                                                 >
                                                     {skill}
                                                 </motion.span>
