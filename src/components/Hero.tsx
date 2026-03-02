@@ -309,9 +309,11 @@ const Hero = () => {
                                         </motion.div>
 
                                         {/* Animated headline */}
-                                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight pb-4" style={{ color: 'var(--theme-text-primary)' }}>
-                                            <div className="mb-2"><WordReveal text={name.split(' ')[0]} /></div>
-                                            <div className="block leading-normal" style={{ color: 'var(--theme-text-secondary)' }}>
+                                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight pb-4">
+                                            <div className="mb-2 text-theme-accent">
+                                                <WordReveal text={name.split(' ')[0]} />
+                                            </div>
+                                            <div className="block leading-normal" style={{ color: 'var(--theme-text-primary)' }}>
                                                 <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
                                             </div>
                                         </h1>
@@ -380,9 +382,11 @@ const Hero = () => {
                                 {portfolioData.personalInfo.title}
                             </motion.div>
 
-                            <div className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance pb-4" style={{ color: 'var(--theme-text-primary)' }}>
-                                <div className="mb-2"><WordReveal text={name.split(' ')[0]} /></div>
-                                <div className="block leading-normal" style={{ color: 'var(--theme-text-secondary)' }}>
+                            <div className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance pb-4">
+                                <div className="mb-2 text-theme-accent">
+                                    <WordReveal text={name.split(' ')[0]} />
+                                </div>
+                                <div className="block leading-normal" style={{ color: 'var(--theme-text-primary)' }}>
                                     <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
                                 </div>
                             </div>
