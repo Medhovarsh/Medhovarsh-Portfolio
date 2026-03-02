@@ -7,10 +7,10 @@ import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { StaggerContainer, StaggerItem } from './ScrollReveal';
 
 const accentGradients = [
-    'from-indigo-500 to-blue-600',
-    'from-blue-500 to-cyan-500',
-    'from-indigo-600 to-violet-500',
-    'from-blue-600 to-indigo-500',
+    'from-theme-accent to-theme-accent-light',
+    'from-theme-accent-light to-theme-accent',
+    'from-theme-accent to-theme-accent-surface',
+    'from-theme-accent-light to-theme-accent-surface',
 ];
 
 const Projects = memo(() => {
@@ -80,7 +80,7 @@ const Projects = memo(() => {
                                                     </div>
 
                                                     {/* Title */}
-                                                    <h3 className="text-2xl md:text-3xl font-black leading-tight tracking-tight group-hover:text-indigo-400 transition-colors">
+                                                    <h3 className="text-2xl md:text-3xl font-black leading-tight tracking-tight group-hover:text-theme-accent transition-colors">
                                                         {project.title}
                                                     </h3>
 
@@ -91,7 +91,7 @@ const Projects = memo(() => {
 
                                                     {/* Link indicator */}
                                                     {isLink && (
-                                                        <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest group-hover:text-indigo-400 transition-colors mt-1" style={{ color: 'var(--theme-text-muted)' }}>
+                                                        <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest group-hover:text-theme-accent transition-colors mt-1" style={{ color: 'var(--theme-text-muted)' }}>
                                                             <ExternalLink size={14} />
                                                             View on GitHub
                                                             <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

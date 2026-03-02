@@ -19,7 +19,7 @@ const Experience = memo(() => {
         <section id="experience" ref={sectionRef} className="py-24 px-6 md:px-12 relative overflow-hidden">
             {/* Scroll-linked progress accent line */}
             <motion.div
-                className="absolute top-0 left-0 h-[2px] origin-left bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500"
+                className="absolute top-0 left-0 h-[2px] origin-left bg-gradient-to-r from-theme-accent-light via-theme-accent to-theme-accent"
                 style={{ scaleX, width: '100%' }}
             />
 
@@ -47,9 +47,9 @@ const Experience = memo(() => {
                             viewport={{ once: true, margin: "-80px" }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
-                            <div className="glass-card group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-indigo-500/30">
+                            <div className="glass-card group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-theme-accent/30">
                                 {/* Decorative accent */}
-                                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-indigo-500 via-blue-500 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-theme-accent via-theme-accent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
                                 <div className="absolute top-0 right-0 w-48 h-48 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'var(--theme-accent-surface)' }} />
 
                                 <div className="grid md:grid-cols-[280px_1fr] gap-0">
@@ -71,7 +71,7 @@ const Experience = memo(() => {
 
                                         {/* Role & Company */}
                                         <div className="space-y-2">
-                                            <h3 className="text-xl font-black leading-tight group-hover:text-indigo-400 transition-colors">
+                                            <h3 className="text-xl font-black leading-tight group-hover:text-theme-accent transition-colors">
                                                 {role.role}
                                             </h3>
                                             <p className="text-sm font-bold" style={{ color: 'var(--theme-text-primary)', opacity: 0.85 }}>
@@ -97,7 +97,7 @@ const Experience = memo(() => {
                                                 href={role.link.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest hover:text-white hover:bg-indigo-500 transition-all group/link"
+                                                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest hover:text-white hover:bg-theme-accent transition-all group/link"
                                                 style={{
                                                     color: 'var(--theme-accent-light)',
                                                     background: 'var(--theme-accent-surface)',

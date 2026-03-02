@@ -46,21 +46,21 @@ const Education = memo(() => {
                                 >
                                     {/* Timeline Line */}
                                     <div
-                                        className="absolute left-0 top-2 bottom-0 w-[1px] bg-gradient-to-b from-indigo-500/20 via-indigo-500/10 to-transparent group-hover:from-indigo-500/50 transition-colors duration-500"
+                                        className="absolute left-0 top-2 bottom-0 w-[1px] bg-gradient-to-b from-theme-accent/20 via-theme-accent/10 to-transparent group-hover:from-theme-accent/50 transition-colors duration-500"
                                     />
 
                                     {/* Timeline Dot */}
                                     <div
-                                        className="absolute left-[-4px] top-2.5 w-2 h-2 rounded-full border border-indigo-500/50 bg-[var(--theme-bg)] group-hover:scale-125 group-hover:border-indigo-500 transition-all duration-300 shadow-[0_0_10px_rgba(99,102,241,0.2)]"
+                                        className="absolute left-[-4px] top-2.5 w-2 h-2 rounded-full border border-theme-accent/50 bg-[var(--theme-bg)] group-hover:scale-125 group-hover:border-theme-accent transition-all duration-300 shadow-[0_0_10px_rgba(99,102,241,0.2)]"
                                     />
 
                                     <div className="flex flex-col gap-3">
                                         <div className="flex flex-col">
-                                            <h3 className="text-xl md:text-2xl font-black text-[var(--theme-text-primary)] group-hover:text-indigo-400 transition-colors tracking-tight">
+                                            <h3 className="text-xl md:text-2xl font-black text-[var(--theme-text-primary)] group-hover:text-theme-accent-light transition-colors tracking-tight">
                                                 {edu.school}
                                             </h3>
                                             <div className="flex items-center gap-2 mt-1">
-                                                <span className="text-sm font-bold text-indigo-400">
+                                                <span className="text-sm font-bold text-theme-accent-light">
                                                     {edu.degree}
                                                 </span>
                                             </div>
@@ -139,14 +139,14 @@ const Education = memo(() => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.05 }}
-                                    className={`group relative p-7 rounded-2xl hover:border-indigo-500/30 transition-all flex items-start gap-5 ${!achievement.link ? 'cursor-default' : ''}`}
+                                    className={`group relative p-7 rounded-2xl hover:border-theme-accent/30 transition-all flex items-start gap-5 ${!achievement.link ? 'cursor-default' : ''}`}
                                     style={{
                                         background: 'var(--theme-card-bg)',
                                         border: '1px solid var(--theme-border)',
                                     }}
                                 >
                                     <div
-                                        className="mt-0.5 p-2.5 rounded-xl group-hover:text-indigo-400 transition-colors shrink-0"
+                                        className="mt-0.5 p-2.5 rounded-xl group-hover:text-theme-accent-light transition-colors shrink-0"
                                         style={{
                                             background: 'var(--theme-accent-surface)',
                                             color: 'var(--theme-text-muted)',
@@ -156,7 +156,7 @@ const Education = memo(() => {
                                         {achievement.link ? <ExternalLink size={16} /> : <Award size={16} />}
                                     </div>
                                     <div className="flex-1 space-y-2">
-                                        <p className="font-medium text-sm group-hover:text-indigo-400 transition-colors leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
+                                        <p className="font-medium text-sm group-hover:text-theme-accent-light transition-colors leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
                                             {achievement.text}
                                         </p>
                                         {achievement.year && (

@@ -162,7 +162,7 @@ const CommandPalette = ({ isOpen, setIsOpen, toggleTechSpecs }: CommandPalettePr
                                             if (action.id !== "email" && action.id !== "theme") setIsOpen(false);
                                         }}
                                         onMouseEnter={() => setSelected(index)}
-                                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors text-sm ${selected === index ? 'bg-indigo-500/20' : ''
+                                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors text-sm ${selected === index ? 'bg-theme-accent/20' : ''
                                             }`}
                                         style={{
                                             color: selected === index ? 'var(--theme-text-primary)' : 'var(--theme-text-tertiary)',

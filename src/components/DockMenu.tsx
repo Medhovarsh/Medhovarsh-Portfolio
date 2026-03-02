@@ -36,7 +36,7 @@ const DockItem = ({ mouseX, icon: Icon, label, href }: { mouseX: MotionValue, ic
                 }}
                 className="rounded-2xl flex items-center justify-center backdrop-blur-md transition-colors duration-300"
             >
-                <motion.div style={{ scale: iconScale, color: 'var(--theme-text-tertiary)' }} className="flex items-center justify-center group-hover:text-indigo-500">
+                <motion.div style={{ scale: iconScale, color: 'var(--theme-text-tertiary)' }} className="flex items-center justify-center group-hover:text-theme-accent">
                     <Icon size={20} />
                 </motion.div>
             </motion.div>
@@ -71,7 +71,7 @@ const MobileNavItem = ({ icon: Icon, label, href, onClick }: { icon: ElementType
         exit={{ opacity: 0, x: -20 }}
     >
         <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:text-indigo-400 transition-colors"
+            className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:text-theme-accent transition-colors"
             style={{
                 background: 'var(--theme-accent-surface)',
                 border: '1px solid var(--theme-accent-border)',
@@ -217,7 +217,7 @@ const DockMenu = ({ onOpenCommand }: { onOpenCommand: () => void }) => {
                 <ThemeToggle />
 
                 <motion.button
-                    className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-500 hover:text-white transition-all cursor-pointer relative group"
+                    className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-theme-accent hover:text-white transition-all cursor-pointer relative group"
                     style={{
                         background: 'var(--theme-accent-surface)',
                         border: '1px solid var(--theme-accent-border)',

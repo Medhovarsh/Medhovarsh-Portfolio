@@ -19,7 +19,7 @@ const CommandPalette = lazy(() => import('./components/CommandPalette'));
 
 const SectionLoader = () => (
   <div className="py-24 flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin" />
+    <div className="w-8 h-8 border-2 border-theme-accent-border border-t-theme-accent rounded-full animate-spin" />
   </div>
 );
 
@@ -58,12 +58,12 @@ function App() {
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 bg-indigo-500 rounded-full animate-ping" />
+              <span className="w-2 h-2 bg-theme-accent rounded-full animate-ping" />
               <span className="text-xs font-mono tracking-[0.2em]" style={{ color: 'var(--theme-accent-light)' }}>INITIALIZING SYSTEM</span>
             </div>
             <div className="w-48 h-[1px] overflow-hidden relative" style={{ backgroundColor: 'var(--theme-border)' }}>
               <motion.div
-                className="absolute inset-y-0 left-0 bg-indigo-500"
+                className="absolute inset-y-0 left-0 bg-theme-accent"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 1.8, ease: "easeInOut" }}
@@ -76,7 +76,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative min-h-screen overflow-x-hidden selection:bg-indigo-500/30 selection:text-indigo-200"
+            className="relative min-h-screen overflow-x-hidden selection:bg-theme-accent-surface selection:text-theme-primary"
             style={{ backgroundColor: 'var(--theme-bg)' }}
           >
             {/* Ambient Noise Texture */}

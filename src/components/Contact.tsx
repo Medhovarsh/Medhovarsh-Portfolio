@@ -35,7 +35,7 @@ const Contact = memo(() => {
                 {Array.from({ length: 6 }).map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 rounded-full bg-indigo-500/40"
+                        className="absolute w-1 h-1 rounded-full bg-theme-accent/40"
                         style={{
                             left: `${15 + i * 15}%`,
                             top: `${20 + (i % 3) * 25}%`,
@@ -69,13 +69,13 @@ const Contact = memo(() => {
                             color: 'var(--theme-accent-light)',
                         }}
                     >
-                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-theme-accent animate-pulse" />
                         Open to Opportunities
                     </div>
 
                     <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-ultra-tight leading-[0.9]">
                         Let's build the <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-400">future</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-theme-accent-light via-theme-accent to-theme-accent">future</span>
                     </h2>
 
                     <p className="text-lg md:text-xl font-normal max-w-2xl mx-auto leading-relaxed mb-16 px-4" style={{ color: 'var(--theme-text-secondary)' }}>
@@ -106,7 +106,7 @@ const Contact = memo(() => {
                         <span className="relative z-10 flex items-center gap-4">
                             Say Hello <Mail size={16} strokeWidth={3} className="group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
                         </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-theme-accent to-theme-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
                     </motion.a>
                 </motion.div>
 
@@ -122,7 +122,7 @@ const Contact = memo(() => {
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-x-8">
                         <motion.a
                             href={`mailto:${portfolioData.personalInfo.email}?subject=${encodeURIComponent("Let's Connect")}`}
-                            className="inline-flex items-center gap-2 text-sm font-medium hover:text-indigo-500 transition-colors"
+                            className="inline-flex items-center gap-2 text-sm font-medium hover:text-theme-accent transition-colors"
                             style={{ color: 'var(--theme-text-secondary)' }}
                             whileHover={{ x: 3 }}
                         >
@@ -131,7 +131,7 @@ const Contact = memo(() => {
                         </motion.a>
                         <motion.a
                             href={`tel:${portfolioData.personalInfo.phone.replace(/[^+\d]/g, '')}`}
-                            className="inline-flex items-center gap-2 text-sm font-medium hover:text-indigo-500 transition-colors"
+                            className="inline-flex items-center gap-2 text-sm font-medium hover:text-theme-accent transition-colors"
                             style={{ color: 'var(--theme-text-secondary)' }}
                             whileHover={{ x: 3 }}
                         >
@@ -158,7 +158,7 @@ const Contact = memo(() => {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center gap-1.5 hover:text-indigo-500 transition-all text-xs font-bold tracking-widest uppercase"
+                                className="group inline-flex items-center gap-1.5 hover:text-theme-accent transition-all text-xs font-bold tracking-widest uppercase"
                                 style={{ color: 'var(--theme-text-muted)' }}
                                 whileHover={{ y: -2 }}
                             >
