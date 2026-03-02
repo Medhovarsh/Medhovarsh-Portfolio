@@ -54,17 +54,17 @@ const About = () => {
                     >
                         <div className="flex items-center gap-3 mb-10">
                             <span className="w-10 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
-                            <span className="text-[10px] font-mono tracking-[0.4em] font-black" style={{ color: 'var(--theme-accent-light)' }}>About Me</span>
+                            <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>About Me</span>
                         </div>
 
-                        <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-ultra-tight leading-tight text-balance text-glow-white">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-8 tracking-tight leading-tight text-balance text-white">
                             Bridging <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400 text-glow">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">
                                 AI Research &amp; Production
                             </span>
                         </h2>
 
-                        <div className="space-y-8 text-base md:text-lg font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
+                        <div className="space-y-6 text-sm md:text-base font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)', opacity: 0.9 }}>
                             <p className="text-balance">
                                 Currently pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
                                 I specialize in turning research-grade models into production systems — from

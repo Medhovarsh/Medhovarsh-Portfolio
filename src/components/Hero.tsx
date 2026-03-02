@@ -292,25 +292,20 @@ const Hero = () => {
                                     <motion.div className="flex flex-col gap-4">
                                         {/* Eyebrow badge */}
                                         <motion.div
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                                            className="inline-flex self-start items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-mono tracking-[0.3em] font-bold uppercase backdrop-blur-sm"
-                                            style={{
-                                                color: 'var(--theme-accent-light)',
-                                                background: 'var(--theme-accent-surface)',
-                                                border: '1px solid var(--theme-accent-border)',
-                                            }}
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+                                            className="text-sm md:text-base font-medium tracking-widest uppercase text-left w-full"
+                                            style={{ color: 'var(--theme-accent-light)', opacity: 0.8 }}
                                         >
-                                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
                                             {portfolioData.personalInfo.title}
                                         </motion.div>
 
                                         {/* Animated headline */}
-                                        <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-glow-white break-words pb-4">
+                                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter leading-[1] text-white break-words pb-4">
                                             <WordReveal text={name.split(' ')[0]} />
                                             <motion.span
-                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block pt-1 leading-normal"
+                                                className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block pt-1 leading-normal"
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -372,21 +367,16 @@ const Hero = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-mono tracking-[0.3em] font-bold uppercase backdrop-blur-sm"
-                                style={{
-                                    color: 'var(--theme-accent-light)',
-                                    background: 'var(--theme-accent-surface)',
-                                    border: '1px solid var(--theme-accent-border)',
-                                }}
+                                className="text-xs font-medium tracking-widest uppercase mb-2"
+                                style={{ color: 'var(--theme-accent-light)' }}
                             >
-                                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
                                 {portfolioData.personalInfo.title}
                             </motion.div>
                             <motion.h1
-                                className="text-4xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-balance text-glow-white break-words pb-4"
+                                className="text-5xl sm:text-6xl font-extrabold tracking-tighter leading-[1.05] text-balance text-white break-words pb-4"
                             >
                                 {name.split(' ')[0]} <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 pt-1 block leading-normal">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 pt-1 block leading-normal">
                                     {name.split(' ')[1]}
                                 </span>
                             </motion.h1>

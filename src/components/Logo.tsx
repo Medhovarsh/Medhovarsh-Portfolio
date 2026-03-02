@@ -5,21 +5,19 @@ const Logo = () => {
         <motion.a
             href="#home"
             id="logo"
-            className="fixed top-8 left-8 z-50 flex items-center gap-3 group px-4 py-2 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.15)]"
+            className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(99,102,241,0.25)]"
             style={{
-                background: 'var(--theme-accent-surface)',
-                border: '1px solid var(--theme-accent-border)',
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             aria-label="Home"
         >
-            <div className="flex items-center justify-center font-black text-xl tracking-tighter" style={{ color: 'var(--theme-accent-light)' }}>
+            <span className="font-extrabold text-lg tracking-tighter" style={{ color: 'var(--theme-text-primary)' }}>
                 MB
-            </div>
-            <span className="font-bold text-sm uppercase tracking-widest hidden md:block" style={{ color: 'var(--theme-text-primary)' }}>
-                Medhovarsh
             </span>
         </motion.a>
     );
