@@ -202,24 +202,24 @@ const ParticleSphere = memo(() => {
 
 
 /* ── Animated Headline ── */
-const WordReveal = ({ text }: { text: string }) => (
-    <div className="overflow-hidden">
-        {text.split(' ').map((word, wi) => (
+const WordReveal = ({ text, delayOffset = 0 }: { text: string, delayOffset?: number }) => (
+    <span className="inline-flex overflow-hidden">
+        {text.split('').map((char, ci) => (
             <motion.span
-                key={wi}
-                className="inline-block mr-[0.25em]"
-                initial={{ y: '110%', opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                key={ci}
+                className="inline-block"
+                initial={{ y: '100%', opacity: 0, filter: 'blur(8px)' }}
+                animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
                 transition={{
-                    delay: 0.5 + wi * 0.12,
-                    duration: 0.7,
-                    ease: [0.22, 1, 0.36, 1],
+                    delay: delayOffset + 0.3 + ci * 0.03,
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
                 }}
             >
-                {word}
+                {char === ' ' ? '\u00A0' : char}
             </motion.span>
         ))}
-    </div>
+    </span>
 );
 
 
@@ -269,14 +269,14 @@ const Hero = () => {
                 {/* Ambient Orbs */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <motion.div
-                        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[100px] opacity-40 mix-blend-screen"
-                        animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.5, 0.3] }}
-                        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] opacity-20 mix-blend-screen"
+                        animate={{ scale: [1, 1.05, 1], opacity: [0.1, 0.15, 0.1] }}
+                        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
                     />
                     <motion.div
-                        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[100px] opacity-40 mix-blend-screen"
-                        animate={{ scale: [1, 1.12, 1], opacity: [0.25, 0.45, 0.25] }}
-                        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gray-500/10 rounded-full blur-[120px] opacity-20 mix-blend-screen"
+                        animate={{ scale: [1, 1.08, 1], opacity: [0.1, 0.2, 0.1] }}
+                        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
                     />
                 </div>
 
@@ -304,15 +304,10 @@ const Hero = () => {
 
                                         {/* Animated headline */}
                                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-tight text-white pb-4">
-                                            <WordReveal text={name.split(' ')[0]} />
-                                            <motion.span
-                                                className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block pt-1 leading-normal"
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                                            >
-                                                {name.split(' ')[1]}
-                                            </motion.span>
+                                            <div className="mb-2"><WordReveal text={name.split(' ')[0]} /></div>
+                                            <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block leading-normal">
+                                                <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
+                                            </div>
                                         </h1>
                                     </motion.div>
 
@@ -373,14 +368,12 @@ const Hero = () => {
                                 <span className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
                                 {portfolioData.personalInfo.title}
                             </motion.div>
-                            <motion.h1
-                                className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance text-white pb-4"
-                            >
-                                {name.split(' ')[0]} <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 pt-1 block leading-normal">
-                                    {name.split(' ')[1]}
-                                </span>
-                            </motion.h1>
+                            <div className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-balance text-white pb-4">
+                                <div className="mb-2"><WordReveal text={name.split(' ')[0]} /></div>
+                                <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500 block leading-normal">
+                                    <WordReveal text={name.split(' ')[1]} delayOffset={0.3} />
+                                </div>
+                            </div>
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -416,7 +409,7 @@ const Hero = () => {
             >
                 <ChevronDown size={24} strokeWidth={1.5} />
             </motion.div>
-        </section>
+        </section >
     );
 };
 

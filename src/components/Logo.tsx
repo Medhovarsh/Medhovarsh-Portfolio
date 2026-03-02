@@ -5,10 +5,10 @@ const Logo = () => {
         <motion.a
             href="#home"
             id="logo"
-            className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(99,102,241,0.25)]"
+            className="fixed top-8 left-8 z-50 flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-2xl transition-all duration-500 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] group"
             style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'var(--theme-glass-bg)',
+                border: '1px solid var(--theme-glass-border)',
                 boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
             }}
             initial={{ opacity: 0, scale: 0.8 }}
@@ -16,9 +16,38 @@ const Logo = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             aria-label="Home"
         >
-            <span className="font-extrabold text-lg tracking-tighter" style={{ color: 'var(--theme-text-primary)' }}>
-                MB
-            </span>
+            <svg
+                width="30"
+                height="30"
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ color: 'var(--theme-text-primary)' }}
+                className="transition-colors group-hover:opacity-70"
+            >
+                {/* Letter M */}
+                <motion.path
+                    d="M 15 80 V 25 L 35 55 L 55 25 V 80"
+                    stroke="currentColor"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+                />
+                {/* Letter B */}
+                <motion.path
+                    d="M 55 25 H 75 C 88 25 88 52.5 75 52.5 C 90 52.5 90 80 75 80 H 55"
+                    stroke="currentColor"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut", delay: 0.6 }}
+                />
+            </svg>
         </motion.a>
     );
 };

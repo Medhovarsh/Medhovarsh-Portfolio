@@ -5,25 +5,25 @@
 /* ── Theme Variables ── */
 :root {
   /* Dark mode (default) */
-  --theme-bg: #030014;
-  --theme-bg-secondary: #0a0a1a;
-  --theme-surface: rgba(255, 255, 255, 0.01);
+  --theme-bg: #000000;
+  --theme-bg-secondary: #0a0a0a;
+  --theme-surface: rgba(255, 255, 255, 0.02);
   --theme-surface-hover: rgba(255, 255, 255, 0.06);
-  --theme-border: rgba(255, 255, 255, 0.05);
-  --theme-border-hover: rgba(255, 255, 255, 0.15);
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --theme-border-hover: rgba(255, 255, 255, 0.2);
   --theme-text-primary: #ffffff;
-  --theme-text-secondary: #cbd5e1;
-  /* slate-300 */
-  --theme-text-tertiary: #94a3b8;
-  /* slate-400 */
-  --theme-text-muted: #64748b;
-  /* slate-500 */
-  --theme-accent: #6366f1;
-  /* indigo-500 */
-  --theme-accent-light: #818cf8;
-  /* indigo-400 */
-  --theme-accent-surface: rgba(99, 102, 241, 0.1);
-  --theme-accent-border: rgba(99, 102, 241, 0.2);
+  --theme-text-secondary: #a1a1aa;
+  /* zinc-400 */
+  --theme-text-tertiary: #71717a;
+  /* zinc-500 */
+  --theme-text-muted: #52525b;
+  /* zinc-600 */
+  --theme-accent: #ffffff;
+  /* white */
+  --theme-accent-light: #d4d4d8;
+  /* zinc-300 */
+  --theme-accent-surface: rgba(255, 255, 255, 0.05);
+  --theme-accent-border: rgba(255, 255, 255, 0.15);
   --theme-glass-bg: rgba(255, 255, 255, 0.03);
   --theme-glass-border: rgba(255, 255, 255, 0.08);
   --theme-card-bg: rgba(255, 255, 255, 0.01);
@@ -36,12 +36,12 @@
   --theme-scrollbar-thumb-hover: #3a3a55;
   --theme-shadow: rgba(0, 0, 0, 0.3);
   --theme-dock-bg: rgba(0, 0, 0, 0.2);
-  --theme-heading-shadow: 0 0 80px rgba(255, 255, 255, 0.08), 0 0 32px rgba(255, 255, 255, 0.04);
-  --theme-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --theme-glow: 0 0 60px rgba(99, 102, 241, 0.3), 0 0 120px rgba(99, 102, 241, 0.1);
+  --theme-heading-shadow: none;
+  --theme-text-shadow: none;
+  --theme-glow: 0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(255, 255, 255, 0.05);
   --theme-glow-white: 0 0 40px rgba(255, 255, 255, 0.15), 0 0 80px rgba(255, 255, 255, 0.05);
-  --theme-aurora-1: rgba(79, 70, 229, 0.06);
-  --theme-aurora-2: rgba(59, 130, 246, 0.05);
+  --theme-aurora-1: rgba(255, 255, 255, 0.02);
+  --theme-aurora-2: rgba(255, 255, 255, 0.01);
   --theme-grain-opacity: 0.02;
   --theme-logo-stroke: white;
   --theme-logo-glow: rgba(255, 255, 255, 0.5);
@@ -62,11 +62,11 @@
   --theme-text-primary: #0f172a;
   --theme-text-secondary: #334155;
   --theme-text-tertiary: #64748b;
-  --theme-text-muted: #94a3b8;
-  --theme-accent: #4f46e5;
-  --theme-accent-light: #6366f1;
-  --theme-accent-surface: rgba(79, 70, 229, 0.05);
-  --theme-accent-border: rgba(79, 70, 229, 0.15);
+  --theme-text-muted: #a1a1aa;
+  --theme-accent: #000000;
+  --theme-accent-light: #3f3f46;
+  --theme-accent-surface: rgba(0, 0, 0, 0.05);
+  --theme-accent-border: rgba(0, 0, 0, 0.15);
   --theme-glass-bg: rgba(255, 255, 255, 0.75);
   --theme-glass-border: rgba(255, 255, 255, 0.5);
   --theme-card-bg: #ffffff;
@@ -81,10 +81,10 @@
   --theme-dock-bg: rgba(255, 255, 255, 0.8);
   --theme-heading-shadow: none;
   --theme-text-shadow: none;
-  --theme-glow: 0 0 20px rgba(79, 70, 229, 0.15);
+  --theme-glow: none;
   --theme-glow-white: none;
-  --theme-aurora-1: rgba(79, 70, 229, 0.08);
-  --theme-aurora-2: rgba(59, 130, 246, 0.08);
+  --theme-aurora-1: rgba(0, 0, 0, 0.02);
+  --theme-aurora-2: rgba(0, 0, 0, 0.01);
   --theme-grain-opacity: 0.03;
   --theme-logo-stroke: #0f172a;
   --theme-logo-glow: rgba(0, 0, 0, 0.05);
@@ -267,7 +267,7 @@ section {
 .cursor-ring[data-state="hover"] {
   width: 56px;
   height: 56px;
-  background-color: rgba(99, 102, 241, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   border-color: var(--theme-accent);
   border-width: 2px;
   mix-blend-mode: normal;

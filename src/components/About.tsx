@@ -57,14 +57,14 @@ const About = () => {
                             <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>About Me</span>
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl font-extrabold mb-8 tracking-tight leading-tight text-balance text-white">
+                        <h2 className="text-3xl md:text-5xl font-semibold mb-8 tracking-tight leading-tight text-balance text-white">
                             Bridging <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">
                                 AI Research &amp; Production
                             </span>
                         </h2>
 
-                        <div className="space-y-6 text-sm md:text-base font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)', opacity: 0.9 }}>
+                        <div className="space-y-6 text-sm md:text-base font-light leading-relaxed text-gray-400">
                             <p className="text-balance">
                                 Currently pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
                                 I specialize in turning research-grade models into production systems — from
@@ -88,14 +88,10 @@ const About = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
                                     whileHover={{ y: -3, scale: 1.03 }}
-                                    className="p-4 rounded-2xl text-center"
-                                    style={{
-                                        background: 'var(--theme-accent-surface)',
-                                        border: '1px solid var(--theme-accent-border)',
-                                    }}
+                                    className="p-4 rounded-2xl text-center border border-white/5 bg-transparent"
                                 >
-                                    <div className="text-2xl mb-1">{stat.icon}</div>
-                                    <div className="text-2xl font-black" style={{ color: 'var(--theme-accent-light)' }}>
+                                    <div className="text-2xl mb-1 text-gray-500">{stat.icon}</div>
+                                    <div className="text-3xl font-bold text-white">
                                         <CountUp target={stat.value} suffix={stat.suffix} />
                                     </div>
                                     <div className="text-xs font-mono uppercase tracking-widest mt-1" style={{ color: 'var(--theme-text-muted)' }}>
@@ -140,13 +136,8 @@ const About = () => {
                                         {category.items.map((skill, i) => (
                                             <StaggerItem key={i}>
                                                 <motion.span
-                                                    whileHover={{ y: -3, scale: 1.08, boxShadow: '0 4px 15px rgba(99,102,241,0.25)' }}
-                                                    className="inline-block px-4 py-2 text-xs font-medium rounded-xl transition-all cursor-default shadow-sm"
-                                                    style={{
-                                                        color: 'var(--theme-text-secondary)',
-                                                        background: 'var(--theme-accent-surface)',
-                                                        border: '1px solid var(--theme-accent-border)',
-                                                    }}
+                                                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+                                                    className="inline-block px-3 py-1.5 text-xs font-medium rounded border border-white/10 bg-white/5 text-gray-300 transition-colors cursor-default"
                                                 >
                                                     {skill}
                                                 </motion.span>
