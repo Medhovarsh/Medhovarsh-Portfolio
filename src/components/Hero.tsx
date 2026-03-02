@@ -307,10 +307,10 @@ const Hero = () => {
                                         </motion.div>
 
                                         {/* Animated headline */}
-                                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-glow-white break-words">
+                                        <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-glow-white break-words pb-4">
                                             <WordReveal text={name.split(' ')[0]} />
                                             <motion.span
-                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block pt-1 pb-4 leading-normal"
+                                                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 block pt-1 leading-normal"
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -324,7 +324,7 @@ const Hero = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.1, duration: 0.6 }}
-                                        className="max-w-md text-xl font-medium leading-relaxed text-balance"
+                                        className="max-w-md text-lg font-medium leading-relaxed text-balance"
                                         style={{ color: 'var(--theme-text-secondary)' }}
                                     >
                                         Building scalable software applications and integrating machine learning models into production.
@@ -383,10 +383,10 @@ const Hero = () => {
                                 {portfolioData.personalInfo.title}
                             </motion.div>
                             <motion.h1
-                                className="text-4xl sm:text-5xl font-black tracking-tight leading-tight text-balance text-glow-white break-words"
+                                className="text-4xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-balance text-glow-white break-words pb-4"
                             >
                                 {name.split(' ')[0]} <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 pt-1 block pb-4 leading-normal">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 pt-1 block leading-normal">
                                     {name.split(' ')[1]}
                                 </span>
                             </motion.h1>
@@ -394,7 +394,7 @@ const Hero = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.7 }}
-                                className="text-base font-medium max-w-xs leading-relaxed text-balance"
+                                className="text-sm font-medium max-w-xs leading-relaxed text-balance"
                                 style={{ color: 'var(--theme-text-secondary)' }}
                             >
                                 Building scalable software applications and integrating machine learning models into production.

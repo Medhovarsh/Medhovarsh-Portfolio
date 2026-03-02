@@ -57,14 +57,14 @@ const About = () => {
                             <span className="text-[10px] font-mono tracking-[0.4em] font-black" style={{ color: 'var(--theme-accent-light)' }}>About Me</span>
                         </div>
 
-                        <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-ultra-tight leading-[0.9] text-balance text-glow-white">
+                        <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-ultra-tight leading-tight text-balance text-glow-white">
                             Bridging <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400 text-glow">
                                 AI Research &amp; Production
                             </span>
                         </h2>
 
-                        <div className="space-y-8 text-lg md:text-xl font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
+                        <div className="space-y-8 text-base md:text-lg font-normal leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
                             <p className="text-balance">
                                 Currently pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
                                 I specialize in turning research-grade models into production systems — from
@@ -98,7 +98,7 @@ const About = () => {
                                     <div className="text-2xl font-black" style={{ color: 'var(--theme-accent-light)' }}>
                                         <CountUp target={stat.value} suffix={stat.suffix} />
                                     </div>
-                                    <div className="text-[10px] font-mono uppercase tracking-widest mt-1" style={{ color: 'var(--theme-text-muted)' }}>
+                                    <div className="text-xs font-mono uppercase tracking-widest mt-1" style={{ color: 'var(--theme-text-muted)' }}>
                                         {stat.label}
                                     </div>
                                 </motion.div>
@@ -121,7 +121,7 @@ const About = () => {
                         {/* Decorative glow inside card */}
                         <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[80px] transition-colors duration-700" style={{ background: 'var(--theme-accent-surface)' }} />
 
-                        <h3 className="text-sm font-black uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+                        <h3 className="text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-3">
                             <span className="w-2 h-2 rounded-full" style={{ background: 'var(--theme-accent)' }} />
                             Technical Arsenal
                         </h3>
@@ -130,7 +130,7 @@ const About = () => {
                             {portfolioData.skills.map((category, idx) => (
                                 <div key={idx} className="relative">
                                     <div className="flex items-baseline gap-4 mb-4">
-                                        <span className="text-[10px] font-mono" style={{ color: 'var(--theme-accent)', opacity: 0.5 }}>0{idx + 1}</span>
+                                        <span className="text-xs font-mono" style={{ color: 'var(--theme-accent)', opacity: 0.5 }}>0{idx + 1}</span>
                                         <h4 className="text-xs font-bold uppercase tracking-widest leading-none" style={{ color: 'var(--theme-text-muted)' }}>
                                             {category.category}
                                         </h4>
@@ -141,7 +141,7 @@ const About = () => {
                                             <StaggerItem key={i}>
                                                 <motion.span
                                                     whileHover={{ y: -3, scale: 1.08, boxShadow: '0 4px 15px rgba(99,102,241,0.25)' }}
-                                                    className="inline-block px-4 py-2 text-[12px] font-medium rounded-xl transition-all cursor-default shadow-sm"
+                                                    className="inline-block px-4 py-2 text-xs font-medium rounded-xl transition-all cursor-default shadow-sm"
                                                     style={{
                                                         color: 'var(--theme-text-secondary)',
                                                         background: 'var(--theme-accent-surface)',
