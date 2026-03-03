@@ -103,7 +103,7 @@ function App() {
             >
               <Activity size={22} strokeWidth={isTechSpecsOpen ? 2.5 : 2} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
               <span
-                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 px-3 py-1.5 backdrop-blur-md border text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
+                className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 backdrop-blur-md border text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
                 style={{
                   background: 'var(--theme-surface)',
                   borderColor: 'var(--theme-border)',
