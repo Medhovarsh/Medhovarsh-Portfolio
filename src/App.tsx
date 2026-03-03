@@ -93,7 +93,7 @@ function App() {
               whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.8, type: 'spring', stiffness: 400, damping: 17 }}
               onClick={() => setIsTechSpecsOpen(prev => !prev)}
-              className="fixed top-6 right-6 z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
+              className="hidden md:flex fixed bottom-8 right-[calc(50%_-_180px)] z-[9999] p-4 rounded-full backdrop-blur-xl border transition-colors duration-300 group"
               style={{
                 background: isTechSpecsOpen ? 'var(--theme-accent-surface)' : 'var(--theme-glass-bg)',
                 borderColor: isTechSpecsOpen ? 'var(--theme-accent)' : 'var(--theme-glass-border)',
@@ -101,7 +101,7 @@ function App() {
                 boxShadow: isTechSpecsOpen ? 'var(--theme-glow)' : 'var(--theme-shadow)'
               }}
             >
-              <Activity size={24} strokeWidth={isTechSpecsOpen ? 2.5 : 2} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
+              <Activity size={22} strokeWidth={isTechSpecsOpen ? 2.5 : 2} className={isTechSpecsOpen ? 'animate-pulse' : ''} />
               <span
                 className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 backdrop-blur-md border text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
                 style={{

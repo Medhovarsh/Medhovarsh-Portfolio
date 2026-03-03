@@ -6,7 +6,7 @@ import {
 } from 'framer-motion';
 import { portfolioData } from '../data/portfolio';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import MagneticHover from './MagneticHover';
+
 
 /* ── CONFIG ── */
 
@@ -36,7 +36,8 @@ const ParticleSphere = memo(() => {
                 canvas.height = parent.clientHeight * dpr;
                 canvas.style.width = `${parent.clientWidth}px`;
                 canvas.style.height = `${parent.clientHeight}px`;
-                ctx.scale(dpr, dpr);
+                // Reset transform then set DPR scale — prevents accumulation on re-size
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
         };
         updateSize();
@@ -193,8 +194,7 @@ const ParticleSphere = memo(() => {
     }, []);
 
     return (
-        <div className="relative w-full h-[400px] flex items-center justify-center">
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-none" />
+        <div className="relative w-full h-[280px] sm:h-[340px] md:h-[400px] flex items-center justify-center">
             <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-none" />
         </div>
     );
@@ -335,19 +335,17 @@ const Hero = () => {
                                         transition={{ delay: 1.3, duration: 0.6 }}
                                         className="flex gap-4 mt-4"
                                     >
-                                        <MagneticHover strength={0.4}>
-                                            <a
-                                                href="#projects"
-                                                className="px-10 py-4 rounded-full font-black text-xs tracking-[0.2em] hover:scale-105 transition-transform flex items-center gap-3 group shadow-xl"
-                                                style={{
-                                                    background: 'var(--theme-accent)',
-                                                    color: 'white',
-                                                    boxShadow: '0 8px 30px var(--theme-accent-surface)',
-                                                }}
-                                            >
-                                                Explore Work <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
-                                            </a>
-                                        </MagneticHover>
+                                        <a
+                                            href="#projects"
+                                            className="px-10 py-4 rounded-full font-black text-xs tracking-[0.2em] hover:scale-105 transition-transform flex items-center gap-3 group shadow-xl"
+                                            style={{
+                                                background: 'var(--theme-accent)',
+                                                color: 'white',
+                                                boxShadow: '0 8px 30px var(--theme-accent-surface)',
+                                            }}
+                                        >
+                                            Explore Work <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                                        </a>
                                     </motion.div>
                                 </motion.div>
 

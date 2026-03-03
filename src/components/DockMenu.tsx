@@ -13,10 +13,10 @@ const DockItem = ({ mouseX, icon: Icon, label, href }: { mouseX: MotionValue, ic
         return val - bounds.x - bounds.width / 2;
     });
 
-    const widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+    const widthSync = useTransform(distance, [-150, 0, 150], [36, 72, 36]);
     const width = useSpring(widthSync, { mass: 0.1, stiffness: 180, damping: 15 });
 
-    const iconScaleSync = useTransform(distance, [-150, 0, 150], [1, 1.4, 1]);
+    const iconScaleSync = useTransform(distance, [-150, 0, 150], [1, 1.35, 1]);
     const iconScale = useSpring(iconScaleSync, { mass: 0.1, stiffness: 180, damping: 15 });
 
     return (
@@ -123,7 +123,7 @@ const DockMenu = ({ onOpenCommand }: { onOpenCommand: () => void }) => {
         return (
             <>
                 {/* Mobile FAB */}
-                <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+                <div className="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3" style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}>
                     <ThemeToggle />
                     <motion.button
                         onClick={() => setMobileOpen(!mobileOpen)}
@@ -134,7 +134,7 @@ const DockMenu = ({ onOpenCommand }: { onOpenCommand: () => void }) => {
                             boxShadow: '0 8px 30px rgba(99, 102, 241, 0.3)',
                         }}
                         whileTap={{ scale: 0.9 }}
-                        animate={{ rotate: mobileOpen ? 180 : 0 }}
+                        animate={{ rotate: mobileOpen ? 45 : 0 }}
                     >
                         {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                     </motion.button>
@@ -153,7 +153,7 @@ const DockMenu = ({ onOpenCommand }: { onOpenCommand: () => void }) => {
                                 onClick={() => setMobileOpen(false)}
                             />
                             <motion.div
-                                className="fixed bottom-24 right-6 z-50 w-64 rounded-3xl p-4 backdrop-blur-xl shadow-2xl overflow-hidden"
+                                className="fixed bottom-28 right-4 z-50 w-[min(16rem,_calc(100vw_-_2rem))] rounded-3xl p-4 backdrop-blur-xl shadow-2xl overflow-hidden"
                                 style={{
                                     background: 'var(--theme-dock-bg)',
                                     border: '1px solid var(--theme-glass-border)',
@@ -184,14 +184,15 @@ const DockMenu = ({ onOpenCommand }: { onOpenCommand: () => void }) => {
 
     /* ── Desktop Dock ── */
     return (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto px-2 max-w-[calc(100vw-1rem)]">
             <motion.div
                 onMouseMove={(e) => mouseX.set(e.clientX)}
                 onMouseLeave={() => mouseX.set(Infinity)}
-                className="flex items-end gap-3 px-4 py-3 rounded-[2rem] backdrop-blur-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                className="flex items-end gap-2 lg:gap-3 px-3 lg:px-4 py-2.5 lg:py-3 rounded-[2rem] backdrop-blur-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-x-auto"
                 style={{
                     background: 'var(--theme-dock-bg)',
                     border: '1px solid var(--theme-glass-border)',
+                    scrollbarWidth: 'none',
                 }}
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

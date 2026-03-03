@@ -366,8 +366,8 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   /* Hide custom cursor on touch devices */
@@ -388,6 +388,40 @@ section {
   /* Reduce aurora intensity for performance */
   .aurora-bg {
     opacity: 0.5;
+  }
+
+  /* Ensure nothing bleeds horizontally */
+  body, #root {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Break long words on mobile */
+  h1, h2, h3, h4, h5, h6, p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Glass cards: prevent bleed */
+  .glass-card {
+    border-radius: 1rem;
+  }
+}
+
+/* Safe area insets for notch/home-bar devices */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  main {
+    padding-bottom: max(8rem, calc(5rem + env(safe-area-inset-bottom)));
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -130,7 +130,7 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="fixed bottom-6 right-6 z-[9999] flex flex-col-reverse items-end gap-2 pointer-events-none select-none font-mono text-[10px] tracking-wide"
+                    className="fixed bottom-6 left-6 z-[9999] flex flex-col-reverse items-start gap-2 pointer-events-none select-none font-mono text-[10px] tracking-wide max-w-[calc(100vw-3rem)] overflow-hidden"
                 >
                     {/* Main HUD Bar */}
                     <div
