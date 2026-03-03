@@ -35,7 +35,7 @@ const Experience = memo(() => {
                         <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>Career Path</span>
                         <span className="w-8 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-ultra-tight leading-[0.9]">Experience</h2>
+                    <h2 style={{ fontSize: 'clamp(2rem, 4vw + 0.5rem, 3.75rem)' }} className="font-black tracking-ultra-tight leading-[0.95]">Experience</h2>
                 </motion.div>
 
                 <div className="space-y-10">
@@ -52,7 +52,7 @@ const Experience = memo(() => {
                                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-theme-accent via-theme-accent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
                                 <div className="absolute top-0 right-0 w-48 h-48 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'var(--theme-accent-surface)' }} />
 
-                                <div className="grid md:grid-cols-[280px_1fr] gap-0">
+                                <div className="grid md:grid-cols-[240px_1fr] gap-0">
                                     {/* Left column — Role metadata */}
                                     <div className="p-6 md:p-10 flex flex-col gap-6 relative border-b md:border-b-0 md:border-r" style={{ borderColor: 'var(--theme-border)' }}>
                                         {/* Role icon badge */}

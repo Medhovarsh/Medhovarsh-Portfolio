@@ -57,7 +57,7 @@ const About = () => {
                             <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>About Me</span>
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-semibold mb-8 tracking-tight leading-tight text-balance" style={{ color: 'var(--theme-text-primary)' }}>
+                        <h2 className="font-semibold mb-8 tracking-tight leading-tight text-balance" style={{ fontSize: 'clamp(2rem, 4vw + 0.5rem, 3.75rem)', color: 'var(--theme-text-primary)' }}>
                             Bridging <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-theme-accent to-theme-accent-light">
                                 AI Research &amp; Production

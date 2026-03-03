@@ -223,7 +223,7 @@ const ParticleSphere = memo(() => {
         // Height: fluid — 55vw on mobile (square-ish), capped at 480px on lg screens
         <div
             ref={wrapRef}
-            className="relative w-full h-[60vw] max-h-[260px] md:h-[340px] md:max-h-[340px] lg:h-[460px] lg:max-h-[460px]"
+            className="relative w-full h-[50vw] max-h-[300px] md:h-[420px] md:max-h-[420px] lg:h-[520px] lg:max-h-[520px]"
         >
             <canvas
                 ref={canvasRef}
@@ -274,7 +274,7 @@ const Hero = () => {
         <section
             id="home"
             ref={sectionRef}
-            className="relative min-h-screen flex items-center justify-center overflow-hidden perspective-1000 cursor-none"
+            className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden perspective-1000 cursor-none"
             style={{ backgroundColor: 'var(--theme-bg)' }}
         >
             {/* Scroll-linked parallax */}
@@ -306,7 +306,7 @@ const Hero = () => {
                      * Desktop (≥lg): two-column grid, text left / sphere right
                      * The sphere is always rendered; only its container position changes.
                      */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center min-h-[calc(100vh-6rem)] py-16 md:py-0">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-10 items-center w-full pt-24 md:pt-0 pb-24 md:pb-16 min-h-screen md:min-h-[600px]">
 
                         {/* ── LEFT / TOP — Text content ── */}
                         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-5 lg:gap-6 order-1">
@@ -377,7 +377,7 @@ const Hero = () => {
 
                         {/* ── RIGHT / BOTTOM — Particle Sphere (always rendered) ── */}
                         <motion.div
-                            className="flex items-center justify-center order-2"
+                            className="flex items-center justify-center order-2 self-stretch"
                             initial={{ opacity: 0, scale: 0.85 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}

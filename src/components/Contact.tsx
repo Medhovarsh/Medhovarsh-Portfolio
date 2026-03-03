@@ -73,7 +73,7 @@ const Contact = memo(() => {
                         Open to Opportunities
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-ultra-tight leading-[0.9]">
+                    <h2 className="font-black mb-10 tracking-ultra-tight leading-[0.9]" style={{ fontSize: 'clamp(2.5rem, 5vw + 1rem, 4.5rem)' }}>
                         Let's build the <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-theme-accent-light via-theme-accent to-theme-accent">future</span>
                     </h2>

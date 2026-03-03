@@ -30,7 +30,7 @@ const Projects = memo(() => {
                         <span className="text-xs font-mono tracking-widest font-black uppercase" style={{ color: 'var(--theme-accent-light)' }}>Selected Work</span>
                         <span className="w-8 h-[1px]" style={{ background: 'var(--theme-accent-border)' }} />
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-ultra-tight leading-[0.9]">Featured Projects</h2>
+                    <h2 style={{ fontSize: 'clamp(2rem, 4vw + 0.5rem, 3.75rem)' }} className="font-black tracking-ultra-tight leading-[0.95]">Featured Projects</h2>
                 </motion.div>
 
                 {/* Staggered project cards */}
@@ -80,7 +80,7 @@ const Projects = memo(() => {
                                                     </div>
 
                                                     {/* Title */}
-                                                    <h3 className="text-2xl md:text-3xl font-black leading-tight tracking-tight group-hover:text-theme-accent transition-colors">
+                                                    <h3 className="text-xl md:text-2xl font-black leading-tight tracking-tight group-hover:text-theme-accent transition-colors">
                                                         {project.title}
                                                     </h3>
 

@@ -30,7 +30,7 @@ const Education = memo(() => {
                             </div>
                             <div className="space-y-1">
                                 <p className="text-[10px] font-mono tracking-[0.4em] font-black" style={{ color: 'var(--theme-accent-light)' }}>Academic</p>
-                                <h2 className="text-4xl font-black tracking-ultra-tight">Background</h2>
+                                <h2 className="font-black tracking-ultra-tight" style={{ fontSize: 'clamp(2rem, 4vw + 0.5rem, 3.75rem)' }}>Background</h2>
                             </div>
                         </motion.div>
 
@@ -124,7 +124,7 @@ const Education = memo(() => {
                             </div>
                             <div className="space-y-1">
                                 <p className="text-[10px] font-mono tracking-[0.4em] font-black" style={{ color: 'var(--theme-accent-light)' }}>Recognition</p>
-                                <h2 className="text-4xl font-black tracking-ultra-tight">Honors</h2>
+                                <h2 className="font-black tracking-ultra-tight" style={{ fontSize: 'clamp(2rem, 4vw + 0.5rem, 3.75rem)' }}>Honors</h2>
                             </div>
                         </motion.div>
 
