@@ -316,8 +316,9 @@ const Hero = () => {
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
-                                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full text-[11px] font-bold tracking-[0.25em] uppercase backdrop-blur-md shadow-2xl"
+                                className="inline-flex items-center gap-2 md:gap-3 px-3 md:px-5 py-2 md:py-2.5 rounded-full font-bold tracking-[0.2em] uppercase backdrop-blur-md shadow-2xl"
                                 style={{
+                                    fontSize: 'clamp(8px, 1.8vw, 11px)',
                                     color: 'var(--theme-text-primary)',
                                     background: 'var(--theme-glass-bg)',
                                     border: '1px solid var(--theme-accent-border)',
@@ -327,9 +328,12 @@ const Hero = () => {
                                 {portfolioData.personalInfo.title}
                             </motion.div>
 
-                            {/* Animated headline */}
-                            <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-[5.5rem] font-extrabold tracking-tight leading-tight">
-                                <div className="mb-2 text-theme-accent text-glow drop-shadow-sm">
+                            {/* Animated headline — clamp() for smooth fluid scaling */}
+                            <h1
+                                className="font-extrabold tracking-tight leading-[1.1] w-full"
+                                style={{ fontSize: 'clamp(1.75rem, 5vw + 0.5rem, 5.5rem)' }}
+                            >
+                                <div className="mb-1 text-theme-accent text-glow drop-shadow-sm">
                                     <WordReveal text={name.split(' ')[0]} />
                                 </div>
                                 <div className="block leading-normal text-glow-white" style={{ color: 'var(--theme-text-primary)' }}>
@@ -342,8 +346,11 @@ const Hero = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 1.1, duration: 0.6 }}
-                                className="max-w-xl text-sm md:text-sm lg:text-base xl:text-lg font-normal leading-relaxed text-balance opacity-90"
-                                style={{ color: 'var(--theme-text-secondary)' }}
+                                className="max-w-xl font-normal leading-relaxed text-balance opacity-90"
+                                style={{
+                                    fontSize: 'clamp(0.8rem, 1.5vw + 0.25rem, 1.125rem)',
+                                    color: 'var(--theme-text-secondary)',
+                                }}
                             >
                                 Architecting scalable full-stack systems and deploying high-performance machine learning models to solve complex engineering challenges.
                             </motion.p>
