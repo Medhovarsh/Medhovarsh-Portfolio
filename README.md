@@ -1,77 +1,49 @@
+# Medhovarsh Portfolio
 
-# Medhovarsh-Portfolio
+A modern, high-grade personal portfolio website showcasing professional experience, projects, and education with FAANG-level polish.
 
-# React + TypeScript + Vite
+## 🚀 Live Demo
+[https://medhovarsh-portfolio.vercel.app](https://medhovarsh-portfolio.vercel.app)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Features
+- **Modern UI/UX**: Fluid typography, seamless scroll animations, and a sleek dark mode.
+- **Interactive Elements**: Command palette, smooth reveal animations, and tech overlays built with Framer Motion.
+- **Responsive Design**: Looks great on all devices, from mobile to ultra-wide screens.
+- **Performance Optimized**: Fast load times powered by Vite.
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💻 Local Development
 
-## React Compiler
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Medhovarsh/Medhovarsh-Portfolio.git
+   cd medhovarsh-portfolio
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:5173`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Deployment
+This project is configured for continuous deployment on [Vercel](https://vercel.com/). Changes pushed to the `main` branch on GitHub automatically trigger a new production build.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
->>>>>>> 8b3bf28 (feat: optimize website performance and add developer HUD)
+## 📄 License
+This project is open-source and available under the MIT License.
