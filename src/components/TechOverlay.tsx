@@ -14,27 +14,25 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
     const memRef = useRef<HTMLSpanElement>(null);
     const scrollRef = useRef<HTMLSpanElement>(null);
 
-    // State for low-frequency updates
-    const [windowSize, setWindowSize] = useState({ w: 0, h: 0 });
-    const [networkType, setNetworkType] = useState<string>('Unknown');
+    // State for low-frequency updates — lazy-init from browser to avoid setState-in-effect
+    const [windowSize, setWindowSize] = useState(() => ({
+        w: typeof window !== 'undefined' ? window.innerWidth : 0,
+        h: typeof window !== 'undefined' ? window.innerHeight : 0,
+    }));
+    const [networkType] = useState<string>(() => {
+        if (typeof navigator === 'undefined') return 'Unknown';
+        // @ts-expect-error - Network Information API (non-standard navigator props)
+        const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        return conn ? (conn.effectiveType || '4g') : 'Unknown';
+    });
 
     // FPS Calculation Variables
     const frameCount = useRef(0);
-    const lastTime = useRef(performance.now());
+    const lastTime = useRef(0);
     const fps = useRef(0);
 
-    // Initial Window Size & Network
+    // Subscribe to viewport resize (setState in callback is the allowed subscription pattern)
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setWindowSize({ w: window.innerWidth, h: window.innerHeight });
-
-            // @ts-ignore - Network Information API
-            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            if (conn) {
-                setNetworkType(conn.effectiveType || '4g');
-            }
-        }
-
         const handleResize = () => setWindowSize({ w: window.innerWidth, h: window.innerHeight });
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -44,6 +42,9 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
     // This runs callback every frame, synced with React's render cycle efficiently
     useAnimationFrame((time) => {
         if (!isVisible) return;
+
+        // Lazy-init timer on first visible frame (avoids impure call during render)
+        if (lastTime.current === 0) lastTime.current = time;
 
         // 1. FPS Calculation
         frameCount.current++;
@@ -59,9 +60,9 @@ const TechOverlay = memo(({ isVisible }: { isVisible: boolean }) => {
         }
 
         // 2. Memory Usage (Chrome specific)
-        // @ts-ignore
+        // @ts-expect-error - performance.memory is Chrome-only, non-standard
         if (performance.memory && memRef.current && frameCount.current % 60 === 0) { // Update memory rarely
-            // @ts-ignore
+            // @ts-expect-error - performance.memory is Chrome-only, non-standard
             const mem = performance.memory as PerformanceMemory;
             const used = Math.round(mem.usedJSHeapSize / 1024 / 1024);
             memRef.current.textContent = `${used}MB`;

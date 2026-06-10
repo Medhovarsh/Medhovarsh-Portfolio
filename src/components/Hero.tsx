@@ -12,6 +12,13 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
  * ANY layout change — window resize, CSS breakpoint switch, grid relayout, etc.
  * The sphere radius scales with the smaller of width/height so it always fits.
  */
+interface Particle {
+    _nx: number; _ny: number; _nz: number;
+    x: number; y: number; z: number;
+    baseX: number; baseY: number; baseZ: number;
+    vx: number; vy: number; vz: number;
+}
+
 const ParticleSphere = memo(() => {
     const wrapRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -26,7 +33,7 @@ const ParticleSphere = memo(() => {
         let animationFrameId: number;
 
         const particleCount = 200;
-        const particles: any[] = [];
+        const particles: Particle[] = [];
         const baseSize = 1.2;
         const maxLineDist = 60;
         const maxLineDistSq = maxLineDist * maxLineDist;

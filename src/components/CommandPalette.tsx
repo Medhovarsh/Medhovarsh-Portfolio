@@ -17,12 +17,12 @@ const CommandPalette = ({ isOpen, setIsOpen, toggleTechSpecs }: CommandPalettePr
     const [copied, setCopied] = useState(false);
 
     const actions = [
-        { id: "home", label: "Home", icon: Home, action: () => window.location.href = "#home" },
-        { id: "about", label: "About Me", icon: User, action: () => window.location.href = "#about" },
-        { id: "work", label: "Projects", icon: Briefcase, action: () => window.location.href = "#projects" },
+        { id: "home", label: "Home", icon: Home, action: () => window.location.assign("#home") },
+        { id: "about", label: "About Me", icon: User, action: () => window.location.assign("#about") },
+        { id: "work", label: "Projects", icon: Briefcase, action: () => window.location.assign("#projects") },
         { id: "tech", label: "Toggle Developer HUD", icon: Terminal, action: () => { toggleTechSpecs(); setIsOpen(false); } },
-        { id: "edu", label: "Education", icon: GraduationCap, action: () => window.location.href = "#education" },
-        { id: "contact", label: "Contact", icon: Mail, action: () => window.location.href = "#contact" },
+        { id: "edu", label: "Education", icon: GraduationCap, action: () => window.location.assign("#education") },
+        { id: "contact", label: "Contact", icon: Mail, action: () => window.location.assign("#contact") },
         {
             id: "github",
             label: "View GitHub Profile",
@@ -98,10 +98,7 @@ const CommandPalette = ({ isOpen, setIsOpen, toggleTechSpecs }: CommandPalettePr
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isOpen, selected, filteredActions]);
-
-    // Reset selection on search change
-    useEffect(() => setSelected(0), [search]);
+    }, [isOpen, selected, filteredActions, setIsOpen]);
 
     // Prevent body scroll when open
     useEffect(() => {
@@ -144,7 +141,7 @@ const CommandPalette = ({ isOpen, setIsOpen, toggleTechSpecs }: CommandPalettePr
                                 className="flex-1 bg-transparent border-none outline-none text-lg font-light"
                                 style={{ color: 'var(--theme-text-primary)' }}
                                 value={search}
-                                onChange={e => setSearch(e.target.value)}
+                                onChange={e => { setSearch(e.target.value); setSelected(0); }}
                                 autoFocus
                             />
                             <div className="px-2 py-1 rounded text-[10px] font-mono" style={{ background: 'var(--theme-tag-bg)', color: 'var(--theme-text-tertiary)' }}>ESC</div>

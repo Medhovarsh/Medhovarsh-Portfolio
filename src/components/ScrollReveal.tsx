@@ -101,7 +101,7 @@ interface StaggerContainerProps {
     staggerDelay?: number;
 }
 
-export const staggerVariants = (staggerDelay = 0.07): Variants => ({
+const staggerVariants = (staggerDelay = 0.07): Variants => ({
     hidden: {},
     visible: {
         transition: {
@@ -111,7 +111,7 @@ export const staggerVariants = (staggerDelay = 0.07): Variants => ({
     },
 });
 
-export const itemVariants: Variants = {
+const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,

@@ -75,11 +75,6 @@ const Education = memo(() => {
                                             <span>{edu.location}</span>
                                         </div>
 
-                                        <p className="text-sm leading-relaxed text-[var(--theme-text-secondary)] mt-1 max-w-md">
-                                            {// @ts-ignore
-                                                edu.description}
-                                        </p>
-
                                         {edu.details && edu.details.length > 0 && (
                                             <div className="flex flex-wrap gap-2 mt-2">
                                                 {edu.details.map((detail, i) => (
