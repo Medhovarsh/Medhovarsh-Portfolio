@@ -359,7 +359,7 @@ const Hero = () => {
                                     color: 'var(--theme-text-secondary)',
                                 }}
                             >
-                                Architecting scalable full-stack systems and deploying high-performance machine learning models to solve complex engineering challenges.
+                                Architecting scalable AI applications and deploying production-grade machine learning systems — from LLM observability tools to computer vision pipelines.
                             </motion.p>
 
                             {/* CTA */}

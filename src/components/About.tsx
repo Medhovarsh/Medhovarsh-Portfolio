@@ -66,14 +66,15 @@ const About = () => {
 
                         <div className="space-y-6 text-sm md:text-base font-light leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
                             <p className="text-balance">
-                                Currently pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
+                                Currently an <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>AI Engineer Intern at AI Trusted Advisors</strong> while
+                                pursuing my <strong className="font-semibold" style={{ color: 'var(--theme-text-primary)' }}>MS in Technology Management at UIUC</strong> (4.0 GPA),
                                 I specialize in turning research-grade models into production systems — from
                                 <span style={{ color: 'var(--theme-text-primary)' }}> medical imaging pipelines</span> to
                                 <span style={{ color: 'var(--theme-text-primary)' }}> real-time computer vision</span>.
                             </p>
                             <p className="text-balance">
                                 My work spans deep learning architectures (Vision Transformers, GNNs, DeepLabV3+),
-                                full-stack development with the MERN stack, and cloud-native deployment.
+                                full-stack development with the MERN stack, agentic AI systems, and cloud-native deployment.
                                 I've published at <span className="font-semibold" style={{ color: 'var(--theme-accent-light)' }}>Springer</span> and <span className="font-semibold" style={{ color: 'var(--theme-accent-light)' }}>IEEE</span>, and I'm always exploring the edge of what's possible.
                             </p>
                         </div>
