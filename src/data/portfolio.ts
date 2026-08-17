@@ -4,6 +4,7 @@ export const portfolioData = {
         title: "AI Engineer | Full-Stack & ML Engineer",
         email: "medhovarshb@gmail.com",
         phone: "+1 (786)-483-0198",
+        location: "Iselin, NJ",
         linkedin: "https://www.linkedin.com/in/medhovarsh-bayyapureddi/",
         github: "https://github.com/Medhovarsh",
         bio: "AI Engineer building scalable AI applications and deploying robust ML/CV pipelines. Currently an AI Engineer Intern at AI Trusted Advisors, developing intelligent systems that bridge engineering and business. MS in Technology Management at UIUC."
@@ -28,24 +29,24 @@ export const portfolioData = {
         {
             company: "AI Trusted Advisors",
             role: "AI Engineer Intern",
-            duration: "Jun 2026 - Present",
-            location: "Champaign, IL",
+            duration: "May 2026 - Present",
+            location: "Las Vegas, NV (Remote)",
             achievements: [
-                "Developing scalable AI applications that integrate with enterprise workflows, optimizing data patterns and business performance metrics.",
-                "Integrating Microsoft Copilot Studio for automated marketing campaign generation, streamlining content creation pipelines.",
-                "Analyzing complex data patterns to drive actionable insights and optimize AI-powered business intelligence solutions.",
-                "Bridging the gap between engineering and business stakeholders to deliver production-grade AI systems."
+                "Built inbound and outbound voice AI systems for real-time customer calls, integrating speech, telephony, and LLM-driven conversation flows.",
+                "Rebuilt the customer-facing lifetimegps.com platform and shipped features including events integration, explainable AI for job recommendations, a trending section, and gamification.",
+                "Migrated the production platform to a new AWS environment and resolved DynamoDB issues with zero downtime for live users.",
+                "Resolved cybersecurity vulnerabilities and hardened production access controls, with details kept confidential."
             ]
         },
         {
             company: "Amrita Vishwa Vidyapeetham",
-            role: "ACM Research Intern",
+            role: "Machine Learning Research Intern",
             duration: "Aug 2023 - Oct 2023",
-            location: "India",
+            location: "Amritapuri, India",
             achievements: [
-                "Architected and deployed end-to-end ML pipelines for crop yield prediction and plant disease detection, improving prediction accuracy to 90% utilizing Vision Transformers and GNNs.",
-                "Engineered a Graph Neural Network-based ontology to unify heterogeneous data streams, enhancing inference consistency by ~15% and streamlining data integration.",
-                "Published peer-reviewed findings in Springer and presented at ICICV-2024."
+                "Built and optimized deep learning image classification pipelines for crop yield prediction and plant disease detection, reaching 85–90% accuracy with automated validation and regression tests confirming results on held-out evaluation sets.",
+                "Designed and ran controlled experiments comparing Vision Transformers against convolutional baselines using statistical analysis and hypothesis testing, guiding final architecture selection on evidence.",
+                "Designed a Graph Neural Network-based ontology to improve data representation and scale analysis across many crops and diseases, contributing to a peer-reviewed Springer publication on agricultural decision systems."
             ],
             link: {
                 text: "View Springer Publication",
